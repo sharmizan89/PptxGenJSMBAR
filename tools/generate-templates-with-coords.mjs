@@ -165,7 +165,7 @@ function generateTemplate(layout) {
     'Content - no subtitle': 'Standard content slide with title, body text, and footnote',
     'Content w 2 Line Title and Sub-headline': 'Content slide with two-line title, sub-headline, body, and footnote',
     'Two Content': 'Side-by-side comparison with title, sub-headline, left/right content',
-    'Two Content + Subtitles': 'Side-by-side with individual subtitles for each column',
+    'Two Content + Subtitles ': 'Side-by-side with individual subtitles for each column',
     'Content 4 Columns': 'Four-column layout with individual subtitles',
     'Content 5 Columns': 'Five-column layout for detailed frameworks',
     'Content with Sidebar': 'Main content area with sidebar for key notes',
