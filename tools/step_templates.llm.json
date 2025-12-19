@@ -1,0 +1,1192 @@
+{
+  "units": "inches",
+  "note": "LLM-ready step templates for all 56 slide layouts. Each layout entry provides: template (human-readable), instructions (concise guidance), and code (PptxGenJS snippets with x,y,w,h coordinates). All positioning uses explicit coordinates from step_templates.data.json.",
+  "layouts": [
+    {
+      "name": "Content - no subtitle",
+      "masterName": "Content - no subtitle",
+      "template": "Standard content slide with title, body text, and footnote",
+      "instructions": "Use for main content slides. Keep title concise (1-2 lines). Use 3-6 bullet points maximum. Add source citation in footnote.",
+      "placeholders": [
+        "Title 6",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content - no subtitle\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.9 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 12.1, h: 4.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Content w 2 Line Title and Sub-headline",
+      "masterName": "Content w 2 Line Title and Sub-headline",
+      "template": "Content slide with two-line title, sub-headline, body, and footnote",
+      "instructions": "Use when you need both a title and explanatory sub-headline. Title can span 2 lines. Sub-headline should be 1 sentence. Body: 3-5 bullets.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content w 2 Line Title and Sub-headline\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.9 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 1.38, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.79, w: 12.1, h: 4.33 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Two Content",
+      "masterName": "Two Content",
+      "template": "Side-by-side comparison with title, sub-headline, left/right content",
+      "instructions": "Use for comparisons or parallel content. Keep each column to 3-5 bullets. Use parallel structure between columns.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Two Content\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 5.5, h: 4.75 })",
+        "slide.addText(ctx.body, { x: 7.22, y: 1.38, w: 5.5, h: 4.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Two Content + Subtitles ",
+      "masterName": "Two Content + Subtitles ",
+      "template": "Layout: Two Content + Subtitles ",
+      "instructions": "Use the Two Content + Subtitles  layout for appropriate content.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Subtitle Left",
+        "Content Placeholder 2",
+        "Subtitle Right",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Two Content + Subtitles \" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.leftSubtitle, { x: 0.62, y: 1.39, w: 5.5, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.8, w: 5.5, h: 4.28 })",
+        "slide.addText(ctx.rightSubtitle, { x: 7.22, y: 1.39, w: 5.5, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 7.22, y: 1.8, w: 5.5, h: 4.28 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Content 4 Columns",
+      "masterName": "Content 4 Columns",
+      "template": "Four-column layout with individual subtitles",
+      "instructions": "Use for frameworks, processes, or categorical breakdowns. Each column: subtitle (2-3 words) + 2-4 bullets.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Subtitle Left",
+        "Text Placeholder 7",
+        "Subtitle Left Middle",
+        "Text Placeholder 7",
+        "Subtitle Middle",
+        "Text Placeholder 7",
+        "Subtitle Right Middle",
+        "Text Placeholder 7",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content 4 Columns\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.leftSubtitle, { x: 0.61, y: 1.38, w: 2.8, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 0.61, y: 1.97, w: 2.8, h: 4.15 })",
+        "slide.addText(ctx.leftSubtitle, { x: 3.71, y: 1.38, w: 2.8, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 3.71, y: 1.97, w: 2.8, h: 4.15 })",
+        "slide.addText(ctx.middleSubtitle, { x: 6.82, y: 1.38, w: 2.8, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 6.82, y: 1.97, w: 2.8, h: 4.15 })",
+        "slide.addText(ctx.rightSubtitle, { x: 9.92, y: 1.38, w: 2.8, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 9.92, y: 1.97, w: 2.8, h: 4.15 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Content 5 Columns",
+      "masterName": "Content 5 Columns",
+      "template": "Five-column layout for detailed frameworks",
+      "instructions": "Use for complex processes or 5-part frameworks. Each column: subtitle (1-2 words) + 2-3 bullets. Keep text concise.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Subtitle Left",
+        "Text Placeholder 7",
+        "Subtitle Left Middle",
+        "Text Placeholder 7",
+        "Subtitle Middle",
+        "Text Placeholder 7",
+        "Subtitle Right Middle",
+        "Text Placeholder 7",
+        "Subtitle Right",
+        "Text Placeholder 7",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content 5 Columns\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.leftSubtitle, { x: 0.61, y: 1.38, w: 2.23, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 0.61, y: 1.97, w: 2.23, h: 4.15 })",
+        "slide.addText(ctx.leftSubtitle, { x: 3.08, y: 1.38, w: 2.23, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 3.08, y: 1.97, w: 2.23, h: 4.15 })",
+        "slide.addText(ctx.middleSubtitle, { x: 5.55, y: 1.38, w: 2.23, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 5.55, y: 1.97, w: 2.23, h: 4.15 })",
+        "slide.addText(ctx.rightSubtitle, { x: 8.02, y: 1.38, w: 2.23, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 8.03, y: 1.97, w: 2.23, h: 4.15 })",
+        "slide.addText(ctx.rightSubtitle, { x: 10.49, y: 1.38, w: 2.23, h: 0.54 })",
+        "slide.addText(ctx.content, { x: 10.49, y: 1.97, w: 2.23, h: 4.15 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Content with Sidebar",
+      "masterName": "Content with Sidebar",
+      "template": "Main content area with sidebar for key notes",
+      "instructions": "Use sidebar for definitions, key metrics, or callouts. Main content: 3-6 bullets. Sidebar: 1-3 short points.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Text Placeholder 3",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content with Sidebar\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 8, h: 4.75 })",
+        "slide.addText(ctx.sidebarContent, { x: 9.18, y: 1.38, w: 3.54, h: 4.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Title Only",
+      "masterName": "Title Only",
+      "template": "Slide with only title and optional sub-headline",
+      "instructions": "Use for section breaks or when content will be added manually. Title can be 1-2 lines. Optional sub-headline for context.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Title Only\" });",
+        "slide.addText(ctx.title, { x: 0.61, y: 0.38, w: 12.11, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Blank",
+      "masterName": "Blank",
+      "template": "Completely blank slide for custom layouts",
+      "instructions": "Use when you need complete design freedom. Add shapes, images, or text manually using x/y coordinates.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Blank\" });",
+        "// Add custom content using slide.addText(), slide.addImage(), etc.",
+        "// Example: slide.addText(\"Custom text\", { x: 1, y: 2, w: 5, h: 1 })"
+      ]
+    },
+    {
+      "name": "Content + Image/Icon",
+      "masterName": "Content + Image/Icon",
+      "template": "Content with accompanying image or icon",
+      "instructions": "Use for concept explanation with visual. Content: 3-5 bullets. Provide image description for selection.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Footnote",
+        "Picture Placeholder 6"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content + Image/Icon\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 5.5, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 5.5, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 5.5, h: 4.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.23, w: 5.5, h: 0.57 })",
+        "if (ctx.imageUrl) slide.addImage({ path: ctx.imageUrl, x: 7.23, y: 0.71, w: 5.5, h: 6.08 })"
+      ]
+    },
+    {
+      "name": "Content + Photo White",
+      "masterName": "Content + Photo White",
+      "template": "Content with full-height photo on white background",
+      "instructions": "Use for visual storytelling. Photo on right, content on left. Content: 3-5 bullets. Provide photo description.",
+      "placeholders": [
+        "Picture Placeholder 7",
+        "Footer Placeholder 1",
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content + Photo White\" });",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 7.23, y: 0, w: 6.1, h: 7.5 })",
+        "slide.addText(ctx.content, { x: 7.23, y: 0, w: 5.49, h: 0.35 })",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 5.5, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 5.5, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 5.5, h: 4.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 5.5, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Content + Photo Black",
+      "masterName": "Content + Photo Black",
+      "template": "Content with full-height photo on black background",
+      "instructions": "Use for dramatic visual impact. Same as white variant but with dark theme. Provide photo description.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content + Photo Black\" });"
+      ]
+    },
+    {
+      "name": "Content + Photo Blue",
+      "masterName": "Content + Photo Blue",
+      "template": "Content with full-height photo on blue background",
+      "instructions": "Use for brand-aligned visual storytelling. Same layout as white/black variants. Provide photo description.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content + Photo Blue\" });"
+      ]
+    },
+    {
+      "name": "~        ",
+      "masterName": "~        ",
+      "template": "Layout: ~        ",
+      "instructions": "Use the ~         layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~        \" });"
+      ]
+    },
+    {
+      "name": "Icons 3 Columns Vertical",
+      "masterName": "Icons 3 Columns Vertical",
+      "template": "Three columns with icons, subtitles, and text arranged vertically",
+      "instructions": "Use for 3-part concepts. Each column: icon + subtitle (2-3 words) + description (1-3 lines). Request 3 icons.",
+      "placeholders": [
+        "Slide Number Placeholder 4",
+        "Title 6",
+        "Sub-headline",
+        "Picture Placeholder Left",
+        "Subtitle Left",
+        "Text Placeholder 20",
+        "Picture Placeholder  Middle",
+        "Subtitle Middle",
+        "Text Placeholder 22",
+        "Picture Placeholder  Right",
+        "Subtitle Right",
+        "Text Placeholder 24",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Icons 3 Columns Vertical\" });",
+        "slide.addText(ctx.content, { x: 12.38, y: 7.19, w: 0.34, h: 0.24 })",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "if (ctx.iconLeft) slide.addImage({ data: ctx.iconLeft, x: 0.61, y: 1.38, w: 1.27, h: 1.27 })",
+        "slide.addText(ctx.leftSubtitle, { x: 0.61, y: 2.88, w: 3.69, h: 0.42 })",
+        "slide.addText(ctx.text, { x: 0.61, y: 3.46, w: 3.69, h: 2.67 })",
+        "if (ctx.iconMiddle) slide.addImage({ data: ctx.iconMiddle, x: 4.82, y: 1.38, w: 1.27, h: 1.27 })",
+        "slide.addText(ctx.middleSubtitle, { x: 4.82, y: 2.88, w: 3.69, h: 0.42 })",
+        "slide.addText(ctx.middleText, { x: 4.82, y: 3.46, w: 3.69, h: 2.67 })",
+        "if (ctx.iconRight) slide.addImage({ data: ctx.iconRight, x: 9.03, y: 1.38, w: 1.27, h: 1.27 })",
+        "slide.addText(ctx.rightSubtitle, { x: 9.03, y: 2.88, w: 3.69, h: 0.42 })",
+        "slide.addText(ctx.rightText, { x: 9.03, y: 3.46, w: 3.69, h: 2.67 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Icons 3 Columns Horizontal",
+      "masterName": "Icons 3 Columns Horizontal",
+      "template": "Three columns with icons, subtitles, and text arranged horizontally",
+      "instructions": "Similar to vertical but different icon sizing. Use for 3-part concepts with shorter descriptions. Request 3 icons.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Picture Placeholder Left",
+        "Subtitle Left",
+        "Text Placeholder 20",
+        "Picture Placeholder  Middle",
+        "Subtitle Left",
+        "Text Placeholder 20",
+        "Picture Placeholder  Right",
+        "Subtitle Left",
+        "Text Placeholder 20",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Icons 3 Columns Horizontal\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "if (ctx.iconLeft) slide.addImage({ data: ctx.iconLeft, x: 0.62, y: 1.38, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.leftSubtitle, { x: 1.95, y: 1.38, w: 10.77, h: 0.29 })",
+        "slide.addText(ctx.text, { x: 1.95, y: 1.73, w: 10.77, h: 1.01 })",
+        "if (ctx.iconMiddle) slide.addImage({ data: ctx.iconMiddle, x: 0.62, y: 2.97, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.leftSubtitle, { x: 1.96, y: 2.97, w: 10.77, h: 0.29 })",
+        "slide.addText(ctx.text, { x: 1.96, y: 3.32, w: 10.77, h: 1.01 })",
+        "if (ctx.iconRight) slide.addImage({ data: ctx.iconRight, x: 0.62, y: 4.55, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.leftSubtitle, { x: 1.96, y: 4.55, w: 10.77, h: 0.29 })",
+        "slide.addText(ctx.text, { x: 1.96, y: 4.9, w: 10.77, h: 1.01 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Icons 4 Columns + Content",
+      "masterName": "Icons 4 Columns + Content",
+      "template": "Four icon columns with additional content area",
+      "instructions": "Use for frameworks with explanation. 4 icons with subtitles + main content area. Request 4 icons. Keep text brief.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 3",
+        "Picture Placeholder Top",
+        "Subtitle Top",
+        "Text Placeholder 15",
+        "Picture Placeholder Middle Top",
+        "Subtitle Top",
+        "Text Placeholder 15",
+        "Picture Placeholder  Middle Bottom",
+        "Subtitle Top",
+        "Text Placeholder 15",
+        "Picture Placeholder  Bottom",
+        "Subtitle Top",
+        "Text Placeholder 15",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Icons 4 Columns + Content\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.mainContent, { x: 0.62, y: 1.38, w: 5.5, h: 4.75 })",
+        "if (ctx.icon1) slide.addImage({ data: ctx.icon1, x: 7.24, y: 1.38, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.topSubtitle, { x: 8.19, y: 1.38, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text1, { x: 8.19, y: 1.75, w: 4.52, h: 0.7 })",
+        "if (ctx.icon2) slide.addImage({ data: ctx.icon2, x: 7.24, y: 2.72, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.topSubtitle, { x: 8.19, y: 2.72, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text2, { x: 8.19, y: 3.09, w: 4.52, h: 0.7 })",
+        "if (ctx.icon3) slide.addImage({ data: ctx.icon3, x: 7.24, y: 4.06, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.topSubtitle, { x: 8.19, y: 4.05, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text3, { x: 8.19, y: 4.42, w: 4.52, h: 0.7 })",
+        "if (ctx.icon4) slide.addImage({ data: ctx.icon4, x: 7.24, y: 5.39, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.topSubtitle, { x: 8.19, y: 5.39, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text4, { x: 8.19, y: 5.76, w: 4.52, h: 0.7 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.46, w: 12.1, h: 0.34 })"
+      ]
+    },
+    {
+      "name": "Icons 4 Columns + Content Black",
+      "masterName": "Icons 4 Columns + Content Black",
+      "template": "Four icon columns with content area on black background",
+      "instructions": "Black variant of 4-column icon layout. Use for dramatic frameworks. Request 4 icons.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 3",
+        "Footnote",
+        "Picture Placeholder Top",
+        "Subtitle Top",
+        "Text Placeholder 15",
+        "Picture Placeholder Middle Top",
+        "Subtitle Middle Top",
+        "Text Placeholder 25",
+        "Picture Placeholder  Middle Bottom",
+        "Subtitle Middle Bottom",
+        "Text Placeholder 27",
+        "Picture Placeholder  Bottom",
+        "Subtitle Bottom",
+        "Text Placeholder 29"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Icons 4 Columns + Content Black\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 5.5, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 5.5, h: 0.31 })",
+        "slide.addText(ctx.mainContent, { x: 0.62, y: 1.38, w: 5.5, h: 4.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.46, w: 5.5, h: 0.34 })",
+        "if (ctx.icon1) slide.addImage({ data: ctx.icon1, x: 7.24, y: 1.38, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.topSubtitle, { x: 8.19, y: 1.39, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text1, { x: 8.19, y: 1.75, w: 4.52, h: 0.7 })",
+        "if (ctx.icon2) slide.addImage({ data: ctx.icon2, x: 7.24, y: 2.72, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.middleSubtitle, { x: 8.19, y: 2.72, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.content, { x: 8.19, y: 3.08, w: 4.52, h: 0.7 })",
+        "if (ctx.icon3) slide.addImage({ data: ctx.icon3, x: 7.24, y: 4.06, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.middleSubtitle, { x: 8.19, y: 4.06, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text3, { x: 8.19, y: 4.42, w: 4.52, h: 0.7 })",
+        "if (ctx.icon4) slide.addImage({ data: ctx.icon4, x: 7.24, y: 5.39, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.bottomSubtitle, { x: 8.19, y: 5.39, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text4, { x: 8.18, y: 5.76, w: 4.52, h: 0.7 })"
+      ]
+    },
+    {
+      "name": "Icons 4 Columns + Content Blue",
+      "masterName": "Icons 4 Columns + Content Blue",
+      "template": "Four icon columns with content area on blue background",
+      "instructions": "Blue variant of 4-column icon layout. Use for brand-aligned frameworks. Request 4 icons.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 3",
+        "Footnote",
+        "Picture Placeholder Top",
+        "Subtitle Top",
+        "Text Placeholder 15",
+        "Picture Placeholder Middle Top",
+        "Subtitle Middle Top",
+        "Text Placeholder 25",
+        "Picture Placeholder  Middle Bottom",
+        "Subtitle Middle Bottom",
+        "Text Placeholder 27",
+        "Picture Placeholder  Bottom",
+        "Subtitle Bottom",
+        "Text Placeholder 29"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Icons 4 Columns + Content Blue\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 5.5, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 5.5, h: 0.31 })",
+        "slide.addText(ctx.mainContent, { x: 0.62, y: 1.38, w: 5.5, h: 4.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.46, w: 5.5, h: 0.34 })",
+        "if (ctx.icon1) slide.addImage({ data: ctx.icon1, x: 7.24, y: 1.38, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.topSubtitle, { x: 8.19, y: 1.39, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text1, { x: 8.19, y: 1.75, w: 4.52, h: 0.7 })",
+        "if (ctx.icon2) slide.addImage({ data: ctx.icon2, x: 7.24, y: 2.72, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.middleSubtitle, { x: 8.19, y: 2.72, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.content, { x: 8.19, y: 3.08, w: 4.52, h: 0.7 })",
+        "if (ctx.icon3) slide.addImage({ data: ctx.icon3, x: 7.24, y: 4.06, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.middleSubtitle, { x: 8.19, y: 4.06, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text3, { x: 8.19, y: 4.42, w: 4.52, h: 0.7 })",
+        "if (ctx.icon4) slide.addImage({ data: ctx.icon4, x: 7.24, y: 5.39, w: 0.8, h: 0.8 })",
+        "slide.addText(ctx.bottomSubtitle, { x: 8.19, y: 5.39, w: 4.52, h: 0.29 })",
+        "slide.addText(ctx.text4, { x: 8.18, y: 5.76, w: 4.52, h: 0.7 })"
+      ]
+    },
+    {
+      "name": "Icons 2 x 3 Columns",
+      "masterName": "Icons 2 x 3 Columns",
+      "template": "Six icons arranged in 2 rows of 3 columns",
+      "instructions": "Use for displaying 6 related concepts or categories. Each icon with brief label. Request 6 icons.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Picture Placeholder Left",
+        "Subtitle Left",
+        "Text Placeholder 20",
+        "Picture Placeholder  Middle",
+        "Subtitle Middle",
+        "Text Placeholder 22",
+        "Picture Placeholder  Middle",
+        "Subtitle Middle",
+        "Text Placeholder 22",
+        "Picture Placeholder Left",
+        "Subtitle Left",
+        "Text Placeholder 20",
+        "Picture Placeholder  Middle",
+        "Subtitle Middle",
+        "Text Placeholder 22",
+        "Picture Placeholder  Middle",
+        "Subtitle Middle",
+        "Text Placeholder 22",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Icons 2 x 3 Columns\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "if (ctx.iconLeft) slide.addImage({ data: ctx.iconLeft, x: 0.62, y: 1.38, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.leftSubtitle, { x: 1.95, y: 1.38, w: 4.22, h: 0.29 })",
+        "slide.addText(ctx.text, { x: 1.95, y: 1.74, w: 4.22, h: 1.01 })",
+        "if (ctx.iconMiddle) slide.addImage({ data: ctx.iconMiddle, x: 0.62, y: 2.97, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.middleSubtitle, { x: 1.95, y: 2.97, w: 4.22, h: 0.29 })",
+        "slide.addText(ctx.middleText, { x: 1.95, y: 3.31, w: 4.22, h: 1.01 })",
+        "if (ctx.iconMiddle) slide.addImage({ data: ctx.iconMiddle, x: 0.62, y: 4.54, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.middleSubtitle, { x: 1.95, y: 4.54, w: 4.22, h: 0.29 })",
+        "slide.addText(ctx.middleText, { x: 1.95, y: 4.88, w: 4.22, h: 1.01 })",
+        "if (ctx.iconLeft) slide.addImage({ data: ctx.iconLeft, x: 7.16, y: 1.38, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.leftSubtitle, { x: 8.49, y: 1.38, w: 4.22, h: 0.29 })",
+        "slide.addText(ctx.text, { x: 8.49, y: 1.74, w: 4.22, h: 1.01 })",
+        "if (ctx.iconMiddle) slide.addImage({ data: ctx.iconMiddle, x: 7.16, y: 2.97, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.middleSubtitle, { x: 8.49, y: 2.97, w: 4.22, h: 0.29 })",
+        "slide.addText(ctx.middleText, { x: 8.49, y: 3.31, w: 4.22, h: 1.01 })",
+        "if (ctx.iconMiddle) slide.addImage({ data: ctx.iconMiddle, x: 7.16, y: 4.54, w: 0.93, h: 0.93 })",
+        "slide.addText(ctx.middleSubtitle, { x: 8.49, y: 4.54, w: 4.22, h: 0.29 })",
+        "slide.addText(ctx.middleText, { x: 8.49, y: 4.88, w: 4.22, h: 1.01 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "~     ",
+      "masterName": "~     ",
+      "template": "Layout: ~     ",
+      "instructions": "Use the ~      layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~     \" });"
+      ]
+    },
+    {
+      "name": "Content + Chart/Table 1",
+      "masterName": "Content + Chart/Table 1",
+      "template": "Content area with chart or table",
+      "instructions": "Use for data visualization with explanatory text. Content: 2-4 bullets. Provide chart data or table structure.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Content Placeholder 17",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Content + Chart/Table 1\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 5.5, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 5.5, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 5.5, h: 4.75 })",
+        "slide.addText(ctx.content, { x: 7.23, y: 0.38, w: 5.5, h: 5.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Chart - Horizontal 2",
+      "masterName": "Chart - Horizontal 2",
+      "template": "Full-width horizontal chart layout",
+      "instructions": "Use for prominent data display. Provide complete chart data with labels and values.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Text Placeholder 7",
+        "Content Placeholder 10",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Chart - Horizontal 2\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 1.38, w: 12.1, h: 0.93 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 2.5, w: 12.1, h: 3.62 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })",
+        "if (ctx.chartData) slide.addChart(ctx.chartType, ctx.chartData, { x: 0.62, y: 2.5, w: 12.1, h: 3.62 })"
+      ]
+    },
+    {
+      "name": "Chart + Statement 2",
+      "masterName": "Chart + Statement 2",
+      "template": "Chart with key statement or insight",
+      "instructions": "Use to highlight a key data point. Statement: 1-2 sentences. Provide chart data.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Text Placeholder 7",
+        "Content Placeholder 10",
+        "Footnote",
+        "Text Placeholder 8"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Chart + Statement 2\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 1.38, w: 12.1, h: 0.91 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 2.5, w: 6.05, h: 3.62 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })",
+        "slide.addText(ctx.content, { x: 7.23, y: 2.5, w: 5.5, h: 3.62 })",
+        "if (ctx.chartData) slide.addChart(ctx.chartType, ctx.chartData, { x: 0.62, y: 2.5, w: 6.05, h: 3.62 })"
+      ]
+    },
+    {
+      "name": "Chart + Statement 3",
+      "masterName": "Chart + Statement 3",
+      "template": "Chart with extended statement area",
+      "instructions": "Similar to Chart + Statement 2 but with more room for statement. Use for complex insights. Provide chart data.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Text Placeholder 7",
+        "Text Placeholder 8",
+        "Content Placeholder 10",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Chart + Statement 3\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 1.38, w: 5.5, h: 1.51 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 3.09, w: 5.5, h: 3.03 })",
+        "slide.addText(ctx.content, { x: 7.23, y: 1.38, w: 5.5, h: 5.4 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 5.5, h: 0.57 })",
+        "if (ctx.chartData) slide.addChart(ctx.chartType, ctx.chartData, { x: 7.23, y: 1.38, w: 5.5, h: 5.4 })"
+      ]
+    },
+    {
+      "name": "~   ",
+      "masterName": "~   ",
+      "template": "Layout: ~   ",
+      "instructions": "Use the ~    layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~   \" });"
+      ]
+    },
+    {
+      "name": "Statement Photo",
+      "masterName": "Statement Photo",
+      "template": "Large statement with background photo",
+      "instructions": "Use for impactful quotes or key messages. Statement: 1-3 sentences. Provide photo description.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Statement Photo\" });"
+      ]
+    },
+    {
+      "name": "Statement Black",
+      "masterName": "Statement Black",
+      "template": "Large statement on black background",
+      "instructions": "Use for dramatic emphasis. Statement: 1-3 sentences maximum.",
+      "placeholders": [
+        "Text Placeholder 6"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Statement Black\" });",
+        "slide.addText(ctx.content, { x: 0.62, y: 0.71, w: 12.1, h: 5.52 })"
+      ]
+    },
+    {
+      "name": "Statement White",
+      "masterName": "Statement White",
+      "template": "Large statement on white background",
+      "instructions": "Use for clean, professional emphasis. Statement: 1-3 sentences maximum.",
+      "placeholders": [
+        "Text Placeholder 6"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Statement White\" });",
+        "slide.addText(ctx.content, { x: 0.62, y: 0.71, w: 12.1, h: 5.52 })"
+      ]
+    },
+    {
+      "name": "~",
+      "masterName": "~",
+      "template": "Layout: ~",
+      "instructions": "Use the ~ layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~\" });"
+      ]
+    },
+    {
+      "name": "Section Header",
+      "masterName": "Section Header",
+      "template": "Section divider with title on dark background",
+      "instructions": "Use to introduce new presentation sections. Title: 3-7 words. Optional subtitle for context.",
+      "placeholders": [
+        "Title 1",
+        "Text Placeholder 6",
+        "Picture Placeholder 6"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Section Header\" });",
+        "slide.addText(ctx.title, { x: 0.61, y: 0.5, w: 5.7, h: 5.22 })",
+        "slide.addText(ctx.content, { x: 0.61, y: 5.72, w: 5.7, h: 0.89 })",
+        "if (ctx.imageUrl) slide.addImage({ path: ctx.imageUrl, x: 6.67, y: 0.53, w: 6.66, h: 6.08 })"
+      ]
+    },
+    {
+      "name": "Divider 4 Photo",
+      "masterName": "Divider 4 Photo",
+      "template": "Section divider with 4 photos",
+      "instructions": "Visual section break with imagery. Provide 4 photo descriptions. Optional title text.",
+      "placeholders": [
+        "Title 1",
+        "Text Placeholder 6",
+        "Picture Placeholder 6"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Divider 4 Photo\" });",
+        "slide.addText(ctx.title, { x: 0.61, y: 0.5, w: 5.7, h: 5.22 })",
+        "slide.addText(ctx.content, { x: 0.61, y: 5.72, w: 5.7, h: 0.89 })",
+        "if (ctx.imageUrl) slide.addImage({ path: ctx.imageUrl, x: 6.67, y: 0.53, w: 6.66, h: 6.08 })"
+      ]
+    },
+    {
+      "name": "Divider 1",
+      "masterName": "Divider 1",
+      "template": "Simple section divider with title",
+      "instructions": "Clean section break. Title: 3-7 words.",
+      "placeholders": [
+        "Title 1",
+        "Text Placeholder 6",
+        "Text Placeholder 6"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Divider 1\" });",
+        "slide.addText(ctx.title, { x: 0.61, y: 2.14, w: 4.44, h: 3.76 })",
+        "slide.addText(ctx.content, { x: 0.61, y: 5.9, w: 4.44, h: 0.89 })",
+        "slide.addText(ctx.content, { x: 7.23, y: 2.14, w: 5.5, h: 4.65 })"
+      ]
+    },
+    {
+      "name": "Divider 2",
+      "masterName": "Divider 2",
+      "template": "Section divider with blue accent",
+      "instructions": "Brand-aligned section break. Title: 3-7 words. Optional subtitle.",
+      "placeholders": [
+        "Title 1",
+        "Text Placeholder 6",
+        "Text Placeholder 6"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Divider 2\" });",
+        "slide.addText(ctx.title, { x: 0.61, y: 2.14, w: 4.44, h: 3.76 })",
+        "slide.addText(ctx.content, { x: 0.61, y: 5.9, w: 4.44, h: 0.89 })",
+        "slide.addText(ctx.content, { x: 7.23, y: 2.14, w: 5.5, h: 4.65 })"
+      ]
+    },
+    {
+      "name": "~  ",
+      "masterName": "~  ",
+      "template": "Layout: ~  ",
+      "instructions": "Use the ~   layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~  \" });"
+      ]
+    },
+    {
+      "name": "Two Placeholders",
+      "masterName": "Two Placeholders",
+      "template": "Two equal content areas side by side",
+      "instructions": "Use for balanced comparisons. Keep each area to 3-5 bullets.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Two Placeholders\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 12.1, h: 2.1 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 4.01, w: 12.1, h: 2.1 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Three Placeholders 1",
+      "masterName": "Three Placeholders 1",
+      "template": "Three equal content areas",
+      "instructions": "Use for 3-part structures. Keep each area to 2-4 bullets.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Three Placeholders 1\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 3.65, h: 4.75 })",
+        "slide.addText(ctx.body, { x: 4.84, y: 1.38, w: 3.65, h: 4.75 })",
+        "slide.addText(ctx.body, { x: 9.07, y: 1.38, w: 3.65, h: 4.75 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Three Placeholders 2",
+      "masterName": "Three Placeholders 2",
+      "template": "Three content areas with alternate sizing",
+      "instructions": "Similar to Three Placeholders 1 with different proportions. Use for emphasis on specific areas.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Three Placeholders 2\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 5.78, h: 4.75 })",
+        "slide.addText(ctx.body, { x: 6.94, y: 1.38, w: 5.78, h: 2.1 })",
+        "slide.addText(ctx.body, { x: 6.94, y: 4.03, w: 5.78, h: 2.1 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Three Placeholders 3",
+      "masterName": "Three Placeholders 3",
+      "template": "Three content areas with alternate arrangement",
+      "instructions": "Third variant of 3-placeholder layout. Use based on content hierarchy.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Three Placeholders 3\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 5.78, h: 2.1 })",
+        "slide.addText(ctx.body, { x: 6.94, y: 1.38, w: 5.78, h: 2.1 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 4.02, w: 12.1, h: 2.1 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "Four Placeholders",
+      "masterName": "Four Placeholders",
+      "template": "Four equal content areas",
+      "instructions": "Use for 4-part structures. Keep each area to 2-3 bullets.",
+      "placeholders": [
+        "Title 6",
+        "Sub-headline",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Content Placeholder 2",
+        "Footnote"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Four Placeholders\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.5 })",
+        "slide.addText(ctx.subHeadline, { x: 0.62, y: 0.98, w: 12.1, h: 0.31 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 5.78, h: 2.1 })",
+        "slide.addText(ctx.body, { x: 6.94, y: 1.38, w: 5.78, h: 2.1 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 4.02, w: 5.78, h: 2.1 })",
+        "slide.addText(ctx.body, { x: 6.94, y: 4.02, w: 5.78, h: 2.1 })",
+        "slide.addText(ctx.footnote, { x: 0.62, y: 6.22, w: 12.1, h: 0.57 })"
+      ]
+    },
+    {
+      "name": "~ ",
+      "masterName": "~ ",
+      "template": "Layout: ~ ",
+      "instructions": "Use the ~  layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~ \" });"
+      ]
+    },
+    {
+      "name": "Title Image Bottom",
+      "masterName": "Title Image Bottom",
+      "template": "Title slide with image at bottom on black background",
+      "instructions": "Use as dramatic opening slide. Title: 5-10 words. Subtitle optional. Provide image description.",
+      "placeholders": [
+        "Title 1",
+        "Text Placeholder 10",
+        "Text Placeholder 15",
+        "Text Placeholder 17",
+        "Picture Placeholder 5"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Title Image Bottom\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 1.41, w: 7.78, h: 1.94 })",
+        "slide.addText(ctx.content, { x: 0.61, y: 3.46, w: 7.78, h: 0.34 })",
+        "slide.addText(ctx.text1, { x: 9.4, y: 1.6, w: 3.32, h: 1.75 })",
+        "slide.addText(ctx.content, { x: 9.4, y: 3.44, w: 3.32, h: 0.26 })",
+        "if (ctx.imageUrl) slide.addImage({ path: ctx.imageUrl, x: 0, y: 4.04, w: 13.37, h: 3.46 })"
+      ]
+    },
+    {
+      "name": "Title White - reports and presentations (hIHS)",
+      "masterName": "Title White - reports and presentations (hIHS)",
+      "template": "White title slide with subtitle and right banner image",
+      "instructions": "Use as first slide. Title: 5-10 words. Subtitle: company/event/date. Provide image description for right banner.",
+      "placeholders": [
+        "Text Placeholder 17",
+        "Title 1",
+        "Text Placeholder 10",
+        "Text Placeholder 15",
+        "Text Placeholder 17",
+        "Picture Placeholder 4",
+        "Text Placeholder 17"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Title White - reports and presentations (hIHS)\" });",
+        "slide.addText(ctx.content, { x: 7.83, y: 0.39, w: 4.89, h: 0.26 })",
+        "slide.addText(ctx.title, { x: 0.62, y: 1.39, w: 7.86, h: 2.04 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 3.54, w: 7.86, h: 0.63 })",
+        "slide.addText(ctx.text1, { x: 0.62, y: 4.3, w: 7.86, h: 2.04 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 6.56, w: 3.32, h: 0.24 })",
+        "if (ctx.imageUrl) slide.addImage({ path: ctx.imageUrl, x: 8.65, y: 1.41, w: 4.69, h: 5.39 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 1.39, w: 6.05, h: 0.26 })"
+      ]
+    },
+    {
+      "name": "~         ",
+      "masterName": "~         ",
+      "template": "Layout: ~         ",
+      "instructions": "Use the ~          layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~         \" });"
+      ]
+    },
+    {
+      "name": "Divider Photo 2",
+      "masterName": "Divider Photo 2",
+      "template": "Section divider with 2 photos",
+      "instructions": "Visual section break with paired imagery. Provide 2 photo descriptions.",
+      "placeholders": [
+        "Title 1",
+        "Text Placeholder 2",
+        "Picture Placeholder 6"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Divider Photo 2\" });",
+        "slide.addText(ctx.title, { x: 0.61, y: 0.5, w: 5.7, h: 0.78 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 1.41, w: 5.7, h: 5.19 })",
+        "if (ctx.imageUrl) slide.addImage({ path: ctx.imageUrl, x: 6.67, y: 0.53, w: 6.66, h: 6.08 })"
+      ]
+    },
+    {
+      "name": "Agenda - presentations",
+      "masterName": "Agenda - presentations",
+      "template": "Presentation agenda with numbered items",
+      "instructions": "Use for agenda slide. List 3-7 agenda items. Keep each item to 3-5 words.",
+      "placeholders": [
+        "TextBox 5",
+        "Text Placeholder 5"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Agenda - presentations\" });",
+        "slide.addText(ctx.content, { x: 0.61, y: 4.04, w: 3.92, h: 0.67 })",
+        "slide.addText(ctx.content, { x: 7.23, y: 2.13, w: 5.5, h: 4.49 })"
+      ]
+    },
+    {
+      "name": "TOC - reports",
+      "masterName": "TOC - reports",
+      "template": "Table of contents for reports",
+      "instructions": "Use for report TOC. List chapter/section titles with page numbers.",
+      "placeholders": [
+        "TextBox 3",
+        "Content Placeholder 2"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"TOC - reports\" });",
+        "slide.addText(ctx.content, { x: 0.62, y: 0.35, w: 12.1, h: 0.4 })",
+        "slide.addText(ctx.body, { x: 0.62, y: 1.38, w: 12.1, h: 5.4 })"
+      ]
+    },
+    {
+      "name": "~          ",
+      "masterName": "~          ",
+      "template": "Layout: ~          ",
+      "instructions": "Use the ~           layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~          \" });"
+      ]
+    },
+    {
+      "name": "Single Author",
+      "masterName": "Single Author",
+      "template": "Author bio with photo and details",
+      "instructions": "Use for speaker introduction. Include name, title, contact, bio (2-3 sentences). Provide headshot photo.",
+      "placeholders": [
+        "Title 1",
+        "Picture Placeholder 17",
+        "Text Placeholder 6",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Single Author\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.9 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 0.62, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 3.43, y: 2.08, w: 9.29, h: 2.39 })",
+        "slide.addText(ctx.content, { x: 0.63, y: 4.66, w: 6.03, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 0.63, y: 5.09, w: 6.03, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 0.64, y: 5.6, w: 6.03, h: 0.36 })"
+      ]
+    },
+    {
+      "name": "2 Authors",
+      "masterName": "2 Authors",
+      "template": "Two author bios side by side",
+      "instructions": "Use for co-presenters. Each author: name, title, contact, bio (1-2 sentences). Provide 2 headshot photos.",
+      "placeholders": [
+        "Title 1",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"2 Authors\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.9 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 0.62, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 0.63, y: 4.66, w: 6.03, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 0.63, y: 5.09, w: 6.03, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 0.64, y: 5.6, w: 6.03, h: 0.36 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 7.14, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 7.14, y: 4.65, w: 5.57, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 7.14, y: 5.08, w: 5.57, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 7.15, y: 5.59, w: 5.57, h: 0.36 })"
+      ]
+    },
+    {
+      "name": "3 Authors",
+      "masterName": "3 Authors",
+      "template": "Three author bios",
+      "instructions": "Use for panel or team. Each author: name, title, contact. Brief bios (1 sentence each). Provide 3 headshot photos.",
+      "placeholders": [
+        "Title 1",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"3 Authors\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.9 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 0.62, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 4.66, w: 3.71, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 5.09, w: 3.72, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 0.63, y: 5.6, w: 3.71, h: 0.36 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 4.87, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 4.85, y: 4.65, w: 3.71, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 4.85, y: 5.08, w: 3.72, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 4.86, y: 5.59, w: 3.71, h: 0.36 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 8.99, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 8.99, y: 4.65, w: 3.71, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 8.99, y: 5.08, w: 3.72, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 9, y: 5.59, w: 3.71, h: 0.36 })"
+      ]
+    },
+    {
+      "name": "4 Authors",
+      "masterName": "4 Authors",
+      "template": "Four author bios",
+      "instructions": "Use for larger panels. Each author: name, title, contact. Keep bios very brief. Provide 4 headshot photos.",
+      "placeholders": [
+        "Title 1",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Picture Placeholder 17",
+        "Text Placeholder 7",
+        "Text Placeholder 7",
+        "Text Placeholder 7"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"4 Authors\" });",
+        "slide.addText(ctx.title, { x: 0.62, y: 0.38, w: 12.1, h: 0.9 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 0.62, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 4.66, w: 2.66, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 0.62, y: 5.09, w: 2.67, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 0.63, y: 5.6, w: 2.66, h: 0.36 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 3.77, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 3.77, y: 4.66, w: 2.66, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 3.78, y: 5.09, w: 2.67, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 3.79, y: 5.6, w: 2.66, h: 0.36 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 6.92, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 6.92, y: 4.66, w: 2.66, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 6.93, y: 5.09, w: 2.67, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 6.94, y: 5.6, w: 2.66, h: 0.36 })",
+        "if (ctx.photoUrl) slide.addImage({ path: ctx.photoUrl, x: 10.07, y: 2.08, w: 2.4, h: 2.4 })",
+        "slide.addText(ctx.content, { x: 10.07, y: 4.66, w: 2.64, h: 0.36 })",
+        "slide.addText(ctx.content, { x: 10.07, y: 5.09, w: 2.64, h: 0.43 })",
+        "slide.addText(ctx.content, { x: 10.08, y: 5.6, w: 2.64, h: 0.36 })"
+      ]
+    },
+    {
+      "name": "~           ",
+      "masterName": "~           ",
+      "template": "Layout: ~           ",
+      "instructions": "Use the ~            layout for appropriate content.",
+      "placeholders": [],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~           \" });"
+      ]
+    },
+    {
+      "name": "Energy",
+      "masterName": "Energy",
+      "template": "Energy division title slide",
+      "instructions": "Energy-branded title slide. Title: 5-10 words. Subtitle: event/date info.",
+      "placeholders": [
+        "TextBox 4"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Energy\" });",
+        "slide.addText(ctx.content, { x: 0.61, y: 1.34, w: 12.12, h: 4.81 })"
+      ]
+    },
+    {
+      "name": "Companies &amp; Transactions",
+      "masterName": "Companies &amp; Transactions",
+      "template": "Layout: Companies &amp; Transactions",
+      "instructions": "Use the Companies &amp; Transactions layout for appropriate content.",
+      "placeholders": [
+        "TextBox 4"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"Companies &amp; Transactions\" });",
+        "slide.addText(ctx.content, { x: 0.61, y: 1.9, w: 12.12, h: 3.71 })"
+      ]
+    },
+    {
+      "name": "~    ",
+      "masterName": "~    ",
+      "template": "Layout: ~    ",
+      "instructions": "Use the ~     layout for appropriate content.",
+      "placeholders": [
+        "TextBox 5"
+      ],
+      "code": [
+        "const slide = pptx.addSlide({ masterName: \"~    \" });",
+        "slide.addText(ctx.content, { x: 0, y: 0, w: 13.33, h: 7.5 })"
+      ]
+    }
+  ]
+}
