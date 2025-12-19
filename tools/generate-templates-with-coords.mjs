@@ -222,7 +222,7 @@ function generateInstructions(layout) {
     'Content - no subtitle': 'Use for main content slides. Keep title concise (1-2 lines). Use 3-6 bullet points maximum. Add source citation in footnote.',
     'Content w 2 Line Title and Sub-headline': 'Use when you need both a title and explanatory sub-headline. Title can span 2 lines. Sub-headline should be 1 sentence. Body: 3-5 bullets.',
     'Two Content': 'Use for comparisons or parallel content. Keep each column to 3-5 bullets. Use parallel structure between columns.',
-    'Two Content + Subtitles': 'Use when each column needs its own subtitle (2-4 words). Keep content brief in each column (2-4 bullets).',
+    'Two Content + Subtitles ': 'Use when each column needs its own subtitle (2-4 words). Keep content brief in each column (2-4 bullets).',
     'Content 4 Columns': 'Use for frameworks, processes, or categorical breakdowns. Each column: subtitle (2-3 words) + 2-4 bullets.',
     'Content 5 Columns': 'Use for complex processes or 5-part frameworks. Each column: subtitle (1-2 words) + 2-3 bullets. Keep text concise.',
     'Content with Sidebar': 'Use sidebar for definitions, key metrics, or callouts. Main content: 3-6 bullets. Sidebar: 1-3 short points.',
