@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PptxGenJS Layout Simulation Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .log {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status.info {
+            background: #cce5ff;
+            color: #004085;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 PptxGenJS Layout Simulation Test</h1>
+    <p>This test uses the <strong>CDN version</strong> of PptxGenJSMBAR and tests all slide layouts following testflow.txt structure.</p>
+    
+    <div id="status" class="status info">Ready to run simulation...</div>
+    
+    <button id="runBtn" class="btn" onclick="runSimulation()">🚀 Generate Test PPTX</button>
+    
+    <h3>Execution Log:</h3>
+    <div id="log" class="log">Waiting for simulation to start...</div>
+
+    <!-- Load PptxGenJS from CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/sharmizan89/PptxGenJSMBAR@main/dist/pptxgen.bundle.js"></script>
+    
+    <script>
+        const logEl = document.getElementById('log');
+        const statusEl = document.getElementById('status');
+        const btnEl = document.getElementById('runBtn');
+        
+        function log(msg) {
+            const time = new Date().toLocaleTimeString();
+            logEl.textContent += `[${time}] ${msg}\n`;
+            logEl.scrollTop = logEl.scrollHeight;
+            console.log(msg);
+        }
+        
+        function setStatus(msg, type) {
+            statusEl.textContent = msg;
+            statusEl.className = `status ${type}`;
+        }
+
+        async function runSimulation() {
+            logEl.textContent = '';
+            btnEl.disabled = true;
+            setStatus('Running simulation...', 'info');
+            
+            try {
+                log('=== PptxGenJS Layout Simulation Test ===');
+                log(`Library Version: ${typeof PptxGenJS !== 'undefined' ? 'Loaded' : 'NOT FOUND'}`);
+                
+                // Create presentation
+                const pptx = new PptxGenJS();
+                log('✓ PptxGenJS instance created');
+                
+                let slideNum = 0;
+                
+                // ==========================
+                // Slide 1: Content - no subtitle
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Content - no subtitle`);
+                let slide1 = pptx.addSlide({ masterName: "Content - no subtitle" });
+                slide1.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide1.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide1.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide1.addText("[Click to add content]", { placeholder: "mainContent" });
+                slide1.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, footer, mainContent, source');
+
+                // ==========================
+                // Slide 2: Content w/Sub-headline
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Content w/Sub-headline`);
+                let slide2 = pptx.addSlide({ masterName: "Content w/Sub-headline" });
+                slide2.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide2.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide2.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide2.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide2.addText("[Click to add content]", { placeholder: "mainContent" });
+                slide2.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, footer, mainContent, source');
+
+                // ==========================
+                // Slide 3: Content w 2 Line Title and Sub-headline
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Content w 2 Line Title and Sub-headline`);
+                let slide3 = pptx.addSlide({ masterName: "Content w 2 Line Title and Sub-headline" });
+                slide3.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide3.addText("[Headline - two lines max]", { placeholder: "headline" });
+                slide3.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide3.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide3.addText("[Click to add content]", { placeholder: "mainContent" });
+                slide3.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, footer, mainContent, source');
+
+                // ==========================
+                // Slide 4: Two Content
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Two Content`);
+                let slide4 = pptx.addSlide({ masterName: "Two Content" });
+                slide4.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide4.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide4.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide4.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide4.addText("[Click to add left content]", { placeholder: "leftContent" });
+                slide4.addText("[Click to add right content]", { placeholder: "rightContent" });
+                slide4.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, footer, leftContent, rightContent, source');
+
+                // ==========================
+                // Slide 5: Two Content + Subtitles (THE PROBLEMATIC ONE)
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Two Content + Subtitles  *** CRITICAL TEST ***`);
+                let slide5 = pptx.addSlide({ masterName: "Two Content + Subtitles " });
+                slide5.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide5.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide5.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide5.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide5.addText("[Left subtitle]", { placeholder: "leftSubtitle" });
+                slide5.addText("[Click to add left content]", { placeholder: "leftContent" });
+                slide5.addText("[Right subtitle]", { placeholder: "rightSubtitle" });
+                slide5.addText("[Click to add right content]", { placeholder: "rightContent" });
+                slide5.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, footer, leftSubtitle, leftContent, rightSubtitle, rightContent, source');
+                log('  ⚠️  This slide tests the fix for leftSubtitle, rightSubtitle, leftContent, rightContent aliases');
+
+                // ==========================
+                // Slide 6: Content 4 Columns
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Content 4 Columns`);
+                let slide6 = pptx.addSlide({ masterName: "Content 4 Columns" });
+                slide6.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide6.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide6.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide6.addText("[subtitle1]", { placeholder: "subtitle1" });
+                slide6.addText("[content1]", { placeholder: "content1" });
+                slide6.addText("[subtitle2]", { placeholder: "subtitle2" });
+                slide6.addText("[content2]", { placeholder: "content2" });
+                slide6.addText("[subtitle3]", { placeholder: "subtitle3" });
+                slide6.addText("[content3]", { placeholder: "content3" });
+                slide6.addText("[subtitle4]", { placeholder: "subtitle4" });
+                slide6.addText("[content4]", { placeholder: "content4" });
+                slide6.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide6.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, subtitle1-4, content1-4, footer, source');
+
+                // ==========================
+                // Slide 7: Content 5 Columns
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Content 5 Columns`);
+                let slide7 = pptx.addSlide({ masterName: "Content 5 Columns" });
+                slide7.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide7.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide7.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide7.addText("[subtitle1]", { placeholder: "subtitle1" });
+                slide7.addText("[content1]", { placeholder: "content1" });
+                slide7.addText("[subtitle2]", { placeholder: "subtitle2" });
+                slide7.addText("[content2]", { placeholder: "content2" });
+                slide7.addText("[subtitle3]", { placeholder: "subtitle3" });
+                slide7.addText("[content3]", { placeholder: "content3" });
+                slide7.addText("[subtitle4]", { placeholder: "subtitle4" });
+                slide7.addText("[content4]", { placeholder: "content4" });
+                slide7.addText("[subtitle5]", { placeholder: "subtitle5" });
+                slide7.addText("[content5]", { placeholder: "content5" });
+                slide7.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide7.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, subtitle1-5, content1-5, footer, source');
+
+                // ==========================
+                // Slide 8: Content with Sidebar
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Content with Sidebar`);
+                let slide8 = pptx.addSlide({ masterName: "Content with Sidebar" });
+                slide8.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide8.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide8.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide8.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide8.addText("[Click to add content]", { placeholder: "mainContent" });
+                slide8.addText("[Click to add side content]", { placeholder: "sideContent" });
+                slide8.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, footer, mainContent, sideContent, source');
+
+                // ==========================
+                // Slide 9: Title Only
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Title Only`);
+                let slide9 = pptx.addSlide({ masterName: "Title Only" });
+                slide9.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide9.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide9.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide9.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide9.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, footer, source');
+
+                // ==========================
+                // Slide 10: Blank
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Blank`);
+                let slide10 = pptx.addSlide({ masterName: "Blank" });
+                slide10.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide10.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                log('  ✓ Added: slideNumber, footer');
+
+                // ==========================
+                // Slide 11: Content + Image/Icon (with placeholder image)
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Content + Image/Icon`);
+                let slide11 = pptx.addSlide({ masterName: "Content + Image/Icon" });
+                slide11.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide11.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide11.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide11.addText("[Click to add content]", { placeholder: "mainContent" });
+                slide11.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide11.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, mainContent, footer, image, source');
+
+                // ==========================
+                // Slide 12: Content + Photo White (with placeholder image)
+                // ==========================
+                slideNum++;
+                log(`\nSlide ${slideNum}: Content + Photo White`);
+                let slide12 = pptx.addSlide({ masterName: "Content + Photo White" });
+                slide12.addText(`${slideNum}`, { placeholder: "slideNumber" });
+                slide12.addText("[Headline - one line max]", { placeholder: "headline" });
+                slide12.addText("[Subheadline - one line max]", { placeholder: "subheadline" });
+                slide12.addText("[Click to add content]", { placeholder: "content" });
+                slide12.addText("[Section name (optional) / Presentation title / Month Year]", { placeholder: "footer" });
+                slide12.addText("[Source / Legal disclaimer / Footnote]", { placeholder: "source" });
+                log('  ✓ Added: slideNumber, headline, subheadline, content, footer, image, source');
+
+                // ==========================
+                // Generate and download
+                // ==========================
+                log('\n=== Generating PPTX file ===');
+                
+                await pptx.writeFile({ fileName: 'Layout_Simulation_Test.pptx' });
+                
+                log('\n✅ SUCCESS! PPTX file generated and downloaded.');
+                log(`Total slides created: ${slideNum}`);
+                log('\n=== VERIFICATION INSTRUCTIONS ===');
+                log('1. Open the downloaded PPTX file in PowerPoint');
+                log('2. Check slide 5 (Two Content + Subtitles) carefully');
+                log('3. Verify that leftSubtitle, rightSubtitle, leftContent, rightContent');
+                log('   are positioned correctly in their placeholder locations');
+                log('4. Check that all text appears in the correct placeholder boxes');
+                log('5. If any text is overlapping or mispositioned, the fix needs adjustment');
+                
+                setStatus('✅ SUCCESS! PPTX file generated and downloaded.', 'success');
+                
+            } catch (error) {
+                log(`\n❌ ERROR: ${error.message}`);
+                log(`Stack: ${error.stack}`);
+                setStatus(`❌ Error: ${error.message}`, 'error');
+            }
+            
+            btnEl.disabled = false;
+        }
+        
+        // Log CDN load status
+        window.addEventListener('load', () => {
+            if (typeof PptxGenJS !== 'undefined') {
+                log('✓ PptxGenJS loaded from CDN successfully');
+            } else {
+                log('❌ ERROR: PptxGenJS not loaded from CDN');
+                setStatus('Error: PptxGenJS library not loaded', 'error');
+            }
+        });
+    </script>
+</body>
+</html>
