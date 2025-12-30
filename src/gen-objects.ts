@@ -1108,9 +1108,13 @@ export function addTextDefinition(target: PresSlide, text: TextProps[], opts: Te
 					'mainContent': ['content2', 'Text Placeholder 2', 'Content Placeholder 2'],  // Main body content
 					'subheadline': ['Sub-headline', 'subheadline'],  // Subheadline (some layouts have lowercase)
 					'source': ['Footnote'],  // Source/footnote area
-					'slideNumber': ['Slide Number Placeholder 5', 'Slide Number Placeholder 4', 'Slide Number Placeholder 3', 'Slide Number Placeholder 6', 'Slide Number Placeholder 11'],  // Slide number
-					'leftContent': ['content2'],  // For two-column layouts, left side
-					'rightContent': ['Content Placeholder 2'],  // For two-column layouts, right side
+					'slideNumber': ['Slide Number Placeholder 5', 'Slide Number Placeholder 4', 'Slide Number Placeholder 3', 'Slide Number Placeholder 6', 'Slide Number Placeholder 11', 'Slide Number Placeholder 2'],  // Slide number
+					'leftContent': ['contentLeft', 'content2'],  // For two-column layouts, left side
+					'rightContent': ['contentRight', 'Content Placeholder 2'],  // For two-column layouts, right side
+					'leftSubtitle': ['subtitleLeft', 'Subtitle Left'],  // For two-column layouts with subtitles
+					'rightSubtitle': ['subtitleRight', 'Subtitle Right'],  // For two-column layouts with subtitles
+					'content': ['content2', 'Text Placeholder 2'],  // Generic content placeholder
+					'sideContent': ['Text Placeholder 3'],  // Sidebar content
 				}
 				
 				// First, try the name-based registry for explicit placeholder name -> type/idx mapping

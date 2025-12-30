@@ -133,19 +133,19 @@ export const PLACEHOLDER_NAME_REGISTRY: PlaceholderNameRegistry = {
       "type": "body",
       "idx": 13
     },
-    "subtitle": {
+    "subtitleLeft": {
       "type": "body",
       "idx": 16
     },
-    "subtitle2": {
+    "subtitleRight": {
       "type": "body",
       "idx": 19
     },
-    "content": {
+    "contentLeft": {
       "type": "body",
       "idx": 22
     },
-    "content2": {
+    "contentRight": {
       "type": "body",
       "idx": 20
     },
