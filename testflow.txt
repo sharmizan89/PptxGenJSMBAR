@@ -1323,7 +1323,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image1", type: "image",
+                    name: "image1", type: "image", _placeholderIdx: 21,
                     x: 0.61, y: 1.38, w: 1.27, h: 1.27
                 }
             },
@@ -1346,7 +1346,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image2", type: "image",
+                    name: "image2", type: "image", _placeholderIdx: 22,
                     x: 4.82, y: 1.38, w: 1.27, h: 1.27
                 }
             },
@@ -1369,7 +1369,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image3", type: "image",
+                    name: "image3", type: "image", _placeholderIdx: 23,
                     x: 9.03, y: 1.38, w: 1.27, h: 1.27
                 }
             },
@@ -1435,7 +1435,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image1", type: "image",
+                    name: "image1", type: "image", _placeholderIdx: 21,
                     x: 0.62, y: 1.38, w: 0.93, h: 0.93
                 }
             },
@@ -1458,7 +1458,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image2", type: "image",
+                    name: "image2", type: "image", _placeholderIdx: 22,
                     x: 0.62, y: 2.97, w: 0.93, h: 0.93
                 }
             },
@@ -1481,7 +1481,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image3", type: "image",
+                    name: "image3", type: "image", _placeholderIdx: 23,
                     x: 0.62, y: 4.55, w: 0.93, h: 0.93
                 }
             },
@@ -1554,7 +1554,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image1", type: "image",
+                    name: "image1", type: "image", _placeholderIdx: 27,
                     x: 7.24, y: 1.38, w: 0.80, h: 0.80
                 }
             },
@@ -1577,7 +1577,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image2", type: "image",
+                    name: "image2", type: "image", _placeholderIdx: 21,
                     x: 7.24, y: 2.72, w: 0.80, h: 0.80
                 }
             },
@@ -1600,7 +1600,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image3", type: "image",
+                    name: "image3", type: "image", _placeholderIdx: 22,
                     x: 7.24, y: 4.06, w: 0.80, h: 0.80
                 }
             },
@@ -1623,7 +1623,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image4", type: "image",
+                    name: "image4", type: "image", _placeholderIdx: 23,
                     x: 7.24, y: 5.39, w: 0.80, h: 0.80
                 }
             },
@@ -1703,7 +1703,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image1", type: "image",
+                    name: "image1", type: "image", _placeholderIdx: 27,
                     x: 7.24, y: 1.38, w: 0.80, h: 0.80
                 }
             },
@@ -1726,7 +1726,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image2", type: "image",
+                    name: "image2", type: "image", _placeholderIdx: 21,
                     x: 7.24, y: 2.72, w: 0.80, h: 0.80
                 }
             },
@@ -1749,7 +1749,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image3", type: "image",
+                    name: "image3", type: "image", _placeholderIdx: 22,
                     x: 7.24, y: 4.06, w: 0.80, h: 0.80
                 }
             },
@@ -1772,7 +1772,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: {
-                    name: "image4", type: "image",
+                    name: "image4", type: "image", _placeholderIdx: 23,
                     x: 7.24, y: 5.39, w: 0.80, h: 0.80
                 }
             },
@@ -1837,7 +1837,7 @@ pptx.defineSlideMaster({
         // Top-Left Block - Image
         {
             placeholder: {
-                options: { name: "image1", type: "image", x: 0.62, y: 1.38, w: 0.93, h: 0.93 }
+                options: { name: "image1", type: "image", _placeholderIdx: 21, x: 0.62, y: 1.38, w: 0.93, h: 0.93 }
             },
         },
         // Top-Left Block - Subtitle
@@ -1857,7 +1857,7 @@ pptx.defineSlideMaster({
         // Top-Right Block - Image
         {
             placeholder: {
-                options: { name: "image2", type: "image", x: 7.16, y: 1.38, w: 0.93, h: 0.93 }
+                options: { name: "image2", type: "image", _placeholderIdx: 22, x: 7.16, y: 1.38, w: 0.93, h: 0.93 }
             },
         },
         // Top-Right Block - Subtitle
@@ -1877,7 +1877,7 @@ pptx.defineSlideMaster({
         // Mid-Left Block - Image
         {
             placeholder: {
-                options: { name: "image3", type: "image", x: 0.62, y: 2.97, w: 0.93, h: 0.93 }
+                options: { name: "image3", type: "image", _placeholderIdx: 33, x: 0.62, y: 2.97, w: 0.93, h: 0.93 }
             },
         },
         // Mid-Left Block - Subtitle
@@ -1897,7 +1897,7 @@ pptx.defineSlideMaster({
         // Mid-Right Block - Image
         {
             placeholder: {
-                options: { name: "image4", type: "image", x: 7.16, y: 2.97, w: 0.93, h: 0.93 }
+                options: { name: "image4", type: "image", _placeholderIdx: 28, x: 7.16, y: 2.97, w: 0.93, h: 0.93 }
             },
         },
         // Mid-Right Block - Subtitle
@@ -1917,7 +1917,7 @@ pptx.defineSlideMaster({
         // Bottom-Left Block - Image
         {
             placeholder: {
-                options: { name: "image5", type: "image", x: 0.62, y: 4.54, w: 0.93, h: 0.93 }
+                options: { name: "image5", type: "image", _placeholderIdx: 29, x: 0.62, y: 4.54, w: 0.93, h: 0.93 }
             },
         },
         // Bottom-Left Block - Subtitle
@@ -1937,7 +1937,7 @@ pptx.defineSlideMaster({
         // Bottom-Right Block - Image
         {
             placeholder: {
-                options: { name: "image6", type: "image", x: 7.16, y: 4.54, w: 0.93, h: 0.93 }
+                options: { name: "image6", type: "image", _placeholderIdx: 36, x: 7.16, y: 4.54, w: 0.93, h: 0.93 }
             },
         },
         // Bottom-Right Block - Subtitle
@@ -2002,13 +2002,13 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: { name: "mainContent", type: "body", x: 0.62, y: 1.34, w: 5.70, h: 4.85, fontFace: "Arial", fontSize: 12, color: colors.black, align: "left", valign: "top", options: { bullet: { indent: 14 }, indentLevel: 0 }, paraSpaceBefore: 0, paraSpaceAfter: 6, _placeholderIdx: 36 },
-                text: "[Content]"
+                text: "[Click to add content]"
             }
         },
         // Chart placeholder (right side)
         {
             placeholder: {
-                options: { name: "chartData", type: "chart", x: 7.23, y: 0.38, w: 5.50, h: 5.75, fontFace: "Arial", fontSize: 9.5, color: colors.white, align: "center", valign: "middle", margin: 0 },
+                options: { name: "chartData", type: "chart", x: 7.23, y: 0.38, w: 5.50, h: 5.75, fontFace: "Arial", fontSize: 9.5, color: colors.white, align: "center", valign: "middle", margin: 0, _placeholderIdx: 15 },
                 text: "[chartData]"
             },
         },
@@ -3517,23 +3517,23 @@ step_templates:data
 },
 {
     "template": "Icons 3 Columns Vertical",
-    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens) and the main body content (min 175 / max 250 tokens). For each of the 3 columns, provide: a URL for <Image> (icons/small images), [Subtitle] (max 7 tokens), and [Content] (max 50 tokens per column). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
-    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 3 Columns Vertical\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\n\n// Column 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl1>\", x: 0.61, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 1.27, h: 1.27 }});\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Column 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl2>\", x: 4.82, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 1.27, h: 1.27 }});\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Column 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl3>\", x: 9.03, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 1.27, h: 1.27 }});\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens) and the main body content (min 175 / max 250 tokens). For each of the 3 columns, provide: a <iconUrl> (icons/small images), [Subtitle] (max 7 tokens), and [Content] (max 50 tokens per column). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 3 Columns Vertical\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\n\n// Column 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl1>\", x: 0.61, y: 1.38, w: 1.27, h: 1.27 });\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Column 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl2>\", x: 4.82, y: 1.38, w: 1.27, h: 1.27 });\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Column 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl3>\", x: 9.03, y: 1.38, w: 1.27, h: 1.27 });\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
 },
 {
     "template": "Icons 3 Columns Horizontal",
-    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens) and the main body content (min 175 / max 250 tokens). For each of the 3 rows, provide: a URL for <Image> (icons/small images), [Subtitle] (max 7 tokens), and [Content] (max 30 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
-    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 3 Columns Horizontal\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl1>\", x: 0.62, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.93, h: 0.93 }});\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl2>\", x: 0.62, y: 2.97, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.93, h: 0.93 }});\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl3>\", x: 0.62, y: 4.55, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.93, h: 0.93 }});\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens) and the main body content (min 175 / max 250 tokens). For each of the 3 rows, provide: a <iconUrl>, [Subtitle] (max 7 tokens), and [Content] (max 30 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 3 Columns Horizontal\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl1>\", x: 0.62, y: 1.38, w: 0.93, h: 0.93 });\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl2>\", x: 0.62, y: 2.97, w: 0.93, h: 0.93 });\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl3>\", x: 0.62, y: 4.55, w: 0.93, h: 0.93 });\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
 },
 {
     "template": "Icons 4 Columns + Content",
-    "instructions": "Provide a [headline] (max 12 tokens). Provide a [subheadline] (max 7 tokens). Provide main [content] for the left panel (max 250 tokens). For each of the 4 right-side rows, provide: a URL for <Image> (icons/small images), [Subtitle] (max 6 tokens), and [Content] (max 20 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
-    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 4 Columns + Content\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Content]\", { placeholder: \"content\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl1>\", x: 7.24, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl2>\", x: 7.24, y: 2.72, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl3>\", x: 7.24, y: 4.06, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\n// Row 4\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl4>\", x: 7.24, y: 5.39, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle4]\", { placeholder: \"subtitle4\" });\nslide<slideNumber>.addText(\"[Content4]\", { placeholder: \"content4\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+    "instructions": "Provide a [headline] (max 12 tokens). Provide a [subheadline] (max 7 tokens). Provide main [content] for the left panel (max 250 tokens). For each of the 4 right-side rows, provide: a <iconUrl>, [Subtitle] (max 6 tokens), and [Content] (max 20 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 4 Columns + Content\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Content]\", { placeholder: \"content\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl1>\", x: 7.24, y: 1.38, w: 0.80, h: 0.80 });\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl2>\", x: 7.24, y: 2.72, w: 0.80, h: 0.80 });\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl3>\", x: 7.24, y: 4.06, w: 0.80, h: 0.80 });\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\n// Row 4\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl4>\", x: 7.24, y: 5.39, w: 0.80, h: 0.80 });\nslide<slideNumber>.addText(\"[Subtitle4]\", { placeholder: \"subtitle4\" });\nslide<slideNumber>.addText(\"[Content4]\", { placeholder: \"content4\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
 },
 {
     "template": "Icons 4 Columns + Content Blue",
-    "instructions": "Provide a [headline] (max 12 tokens). Provide a [subheadline] (max 7 tokens). Provide main [content] for the left panel (max 250 tokens). For each of the 4 right-side rows, provide: a URL for <Image> (icons/small images), [Subtitle] (max 6 tokens), and [Content] (max 20 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
-    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 4 Columns + Content Blue\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Content]\", { placeholder: \"content\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl1>\", x: 7.24, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl2>\", x: 7.24, y: 2.72, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl3>\", x: 7.24, y: 4.06, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\n// Row 4\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl4>\", x: 7.24, y: 5.39, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle4]\", { placeholder: \"subtitle4\" });\nslide<slideNumber>.addText(\"[Content4]\", { placeholder: \"content4\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+    "instructions": "Provide a [headline] (max 12 tokens). Provide a [subheadline] (max 7 tokens). Provide main [content] for the left panel (max 250 tokens). For each of the 4 right-side rows, provide: a <iconUrl>, [Subtitle] (max 6 tokens), and [Content] (max 20 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 4 Columns + Content Blue\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Content]\", { placeholder: \"content\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl1>\", x: 7.24, y: 1.38, w: 0.80, h: 0.80 });\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl2>\", x: 7.24, y: 2.72, w: 0.80, h: 0.80 });\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl3>\", x: 7.24, y: 4.06, w: 0.80, h: 0.80 });\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\n// Row 4\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<iconUrl4>\", x: 7.24, y: 5.39, w: 0.80, h: 0.80 });\nslide<slideNumber>.addText(\"[Subtitle4]\", { placeholder: \"subtitle4\" });\nslide<slideNumber>.addText(\"[Content4]\", { placeholder: \"content4\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
 },
 {
     "template": "Content + Chart/Table 1",

@@ -612,7 +612,7 @@ export const PLACEHOLDER_NAME_REGISTRY: PlaceholderNameRegistry = {
       "type": "body",
       "idx": 18
     },
-    "content2": {
+    "mainContent": {
       "type": "body",
       "idx": 36
     },
@@ -666,11 +666,11 @@ export const PLACEHOLDER_NAME_REGISTRY: PlaceholderNameRegistry = {
       "type": "body",
       "idx": 13
     },
-    "Text Placeholder 7": {
+    "statement": {
       "type": "body",
       "idx": 15
     },
-    "content2": {
+    "chartData": {
       "type": "body",
       "idx": 16
     },
@@ -678,7 +678,7 @@ export const PLACEHOLDER_NAME_REGISTRY: PlaceholderNameRegistry = {
       "type": "body",
       "idx": 21
     },
-    "Text Placeholder 8": {
+    "mainContent": {
       "type": "body",
       "idx": 17
     }
@@ -699,15 +699,15 @@ export const PLACEHOLDER_NAME_REGISTRY: PlaceholderNameRegistry = {
       "type": "body",
       "idx": 13
     },
-    "Text Placeholder 7": {
+    "statement": {
       "type": "body",
       "idx": 15
     },
-    "Text Placeholder 8": {
+    "mainContent": {
       "type": "body",
       "idx": 17
     },
-    "content2": {
+    "chartData": {
       "type": "body",
       "idx": 16
     },
