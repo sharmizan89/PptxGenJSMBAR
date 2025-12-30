@@ -1350,7 +1350,29 @@ export function addPlaceholdersToSlideLayouts(slide: PresSlide): void {
 			// A: Search for this placeholder on Slide before we add
 			// NOTE: Check to ensure a placeholder does not already exist on the Slide
 			// They are created when they have been populated with text (ex: `slide.addText('Hi', { placeholder:'title' });`)
-			if (slide._slideObjects.filter(slideObj => slideObj.options && slideObj.options.placeholder === slideLayoutObj.options.placeholder).length === 0) {
+			// Use _placeholderIdx for comparison since user might use alias names (leftSubtitle vs subtitleLeft)
+			const layoutPlaceholderIdx = slideLayoutObj.options._placeholderIdx
+			const layoutPlaceholderType = slideLayoutObj.options._placeholderType
+			
+			// Check if placeholder already exists by matching idx (preferred) or by placeholder name
+			const alreadyExists = slide._slideObjects.filter(slideObj => {
+				if (!slideObj.options) return false
+				
+				// Match by idx if both have idx defined
+				if (layoutPlaceholderIdx !== undefined && slideObj.options._placeholderIdx !== undefined) {
+					return slideObj.options._placeholderIdx === layoutPlaceholderIdx
+				}
+				
+				// Match by type for placeholders without idx (like title)
+				if (layoutPlaceholderIdx === undefined && slideObj.options._placeholderType) {
+					return slideObj.options._placeholderType === layoutPlaceholderType
+				}
+				
+				// Fallback: match by placeholder name (original behavior)
+				return slideObj.options.placeholder === slideLayoutObj.options.placeholder
+			}).length > 0
+			
+			if (!alreadyExists) {
 				addTextDefinition(slide, [{ text: '' }], slideLayoutObj.options, true)
 			}
 		}

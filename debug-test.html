@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Test - Placeholder Resolution</title>
+</head>
+<body>
+    <h1>Debug Test - Check Placeholder Resolution</h1>
+    <pre id="output"></pre>
+    
+    <script src="https://cdn.jsdelivr.net/gh/sharmizan89/PptxGenJSMBAR@main/dist/pptxgen.bundle.js"></script>
+    <script>
+        const out = document.getElementById('output');
+        function log(msg) {
+            out.textContent += msg + '\n';
+            console.log(msg);
+        }
+        
+        async function run() {
+            log('=== Debug Test: Checking Placeholder Resolution ===\n');
+            
+            const pptx = new PptxGenJS();
+            log('PptxGenJS version: ' + pptx.version);
+            
+            // Check the internal registry
+            log('\n=== Checking PLACEHOLDER_NAME_REGISTRY ===');
+            if (window.PptxGenJS && window.PptxGenJS.PLACEHOLDER_NAME_REGISTRY) {
+                const reg = window.PptxGenJS.PLACEHOLDER_NAME_REGISTRY;
+                log('Registry found: ' + Object.keys(reg).length + ' layouts');
+                if (reg["Two Content + Subtitles "]) {
+                    log('Found "Two Content + Subtitles " in registry');
+                    log('  subtitleLeft: ' + JSON.stringify(reg["Two Content + Subtitles "].subtitleLeft));
+                    log('  contentLeft: ' + JSON.stringify(reg["Two Content + Subtitles "].contentLeft));
+                } else {
+                    log('ERROR: "Two Content + Subtitles " NOT found in registry');
+                }
+            } else {
+                log('PLACEHOLDER_NAME_REGISTRY not exposed on window');
+            }
+            
+            // Create a slide and check what happens
+            log('\n=== Creating Test Slide ===');
+            const slide = pptx.addSlide({ masterName: "Two Content + Subtitles " });
+            
+            log('Slide layout name: ' + slide._slideLayout?._name);
+            log('Slide layout _slideObjects count: ' + (slide._slideLayout?._slideObjects?.length || 0));
+            
+            // Add text and check the resulting object
+            slide.addText('[Left subtitle test]', { placeholder: 'leftSubtitle' });
+            
+            // Check the last added object
+            const lastObj = slide._slideObjects[slide._slideObjects.length - 1];
+            log('\n=== Last Added Object ===');
+            log('_type: ' + lastObj._type);
+            log('options.placeholder: ' + lastObj.options?.placeholder);
+            log('options._placeholderType: ' + lastObj.options?._placeholderType);
+            log('options._placeholderIdx: ' + lastObj.options?._placeholderIdx);
+            
+            log('\n=== Full options (relevant fields) ===');
+            const opts = lastObj.options;
+            log(JSON.stringify({
+                placeholder: opts?.placeholder,
+                _placeholderType: opts?._placeholderType,
+                _placeholderIdx: opts?._placeholderIdx,
+                x: opts?.x,
+                y: opts?.y,
+                w: opts?.w,
+                h: opts?.h
+            }, null, 2));
+            
+            log('\n=== Test Complete ===');
+        }
+        
+        run().catch(e => log('ERROR: ' + e.message));
+    </script>
+</body>
+</html>
