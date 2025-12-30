@@ -9986,19 +9986,33 @@ class PptxGenJS {
         this._rtlMode = false;
         //
         // Initialize slide layouts from consolidated registry names (order defines slideLayoutN)
+        // Also populate _slideObjects with placeholder definitions from PLACEHOLDER_NAME_REGISTRY
         this._slideLayouts = (CUSTOM_SLIDE_LAYOUT_DEFS && CUSTOM_SLIDE_LAYOUT_DEFS.length > 0)
-            ? CUSTOM_SLIDE_LAYOUT_DEFS.map((def, idx) => ({
-                _margin: DEF_SLIDE_MARGIN_IN,
-                _name: def.name,
-                _presLayout: this._presLayout,
-                _rels: [],
-                _relsChart: [],
-                _relsMedia: [],
-                _slide: null,
-                _slideNum: 1000 + idx + 1,
-                _slideNumberProps: null,
-                _slideObjects: [],
-            }))
+            ? CUSTOM_SLIDE_LAYOUT_DEFS.map((def, idx) => {
+                // Get placeholder definitions for this layout from the registry
+                const layoutPlaceholders = PLACEHOLDER_NAME_REGISTRY[def.name] || {};
+                const slideObjects = Object.entries(layoutPlaceholders).map(([placeholderName, phDef]) => ({
+                    _type: SLIDE_OBJECT_TYPES.placeholder,
+                    text: [],
+                    options: {
+                        placeholder: placeholderName,
+                        _placeholderType: phDef.type,
+                        _placeholderIdx: phDef.idx,
+                    },
+                }));
+                return {
+                    _margin: DEF_SLIDE_MARGIN_IN,
+                    _name: def.name,
+                    _presLayout: this._presLayout,
+                    _rels: [],
+                    _relsChart: [],
+                    _relsMedia: [],
+                    _slide: null,
+                    _slideNum: 1000 + idx + 1,
+                    _slideNumberProps: null,
+                    _slideObjects: slideObjects,
+                };
+            })
             : [
                 {
                     _margin: DEF_SLIDE_MARGIN_IN,
