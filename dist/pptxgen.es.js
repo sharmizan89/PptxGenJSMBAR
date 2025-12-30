@@ -1,4 +1,4 @@
-/* PptxGenJS 0.9.9 @ 2025-12-30T07:12:36.586Z */
+/* PptxGenJS 0.9.9 @ 2025-12-30T08:07:03.746Z */
 import JSZip from 'jszip';
 
 /******************************************************************************
@@ -4497,11 +4497,32 @@ function addTextDefinition(target, text, opts, isPlaceholder) {
             // the placeholder name and look up the idx from the registry
             if (itemOpts.placeholder && target._slideLayout && !itemOpts._placeholderType) {
                 const layoutName = target._slideLayout._name;
+                // Alias mapping: map common custom placeholder names to OOXML names
+                // This allows testflow to use friendly names (headline, mainContent, source)
+                // that map to the actual OOXML placeholder names (Title 6, content2, Footnote)
+                const PLACEHOLDER_ALIASES = {
+                    'headline': ['Title 6', 'Title 1'], // Title placeholder
+                    'mainContent': ['content2', 'Text Placeholder 2', 'Content Placeholder 2'], // Main body content
+                    'subheadline': ['Sub-headline', 'subheadline'], // Subheadline (some layouts have lowercase)
+                    'source': ['Footnote'], // Source/footnote area
+                    'slideNumber': ['Slide Number Placeholder 5', 'Slide Number Placeholder 4', 'Slide Number Placeholder 3', 'Slide Number Placeholder 6', 'Slide Number Placeholder 11'], // Slide number
+                    'leftContent': ['content2'], // For two-column layouts, left side
+                    'rightContent': ['Content Placeholder 2'], // For two-column layouts, right side
+                };
                 // First, try the name-based registry for explicit placeholder name -> type/idx mapping
                 const nameRegistryEntry = PLACEHOLDER_NAME_REGISTRY[layoutName];
                 if (nameRegistryEntry) {
-                    const placeholderName = itemOpts.placeholder; // Use original case for name lookup
-                    const mapping = nameRegistryEntry[placeholderName];
+                    let placeholderName = itemOpts.placeholder; // Use original case for name lookup
+                    let mapping = nameRegistryEntry[placeholderName];
+                    // If no direct match, try alias mapping
+                    if (!mapping && PLACEHOLDER_ALIASES[placeholderName]) {
+                        for (const alias of PLACEHOLDER_ALIASES[placeholderName]) {
+                            if (nameRegistryEntry[alias]) {
+                                mapping = nameRegistryEntry[alias];
+                                break;
+                            }
+                        }
+                    }
                     if (mapping) {
                         itemOpts._placeholderType = mapping.type;
                         if (mapping.idx !== undefined) {
