@@ -358,7 +358,7 @@ step_head:data
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S&P Global PowerPoint Generator</title>
-<script src="https://cdn.jsdelivr.net/gh/sharmizan89/PptxGenJSMBAR/dist/pptxgen.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sharmizan89/PptxGenJSMBAR@main/dist/pptxgen.bundle.js"></script>
 <style>
 body {
     font-family: Arial, sans-serif;
