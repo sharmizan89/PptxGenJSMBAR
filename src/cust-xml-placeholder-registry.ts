@@ -133,13 +133,21 @@ export const PLACEHOLDER_NAME_REGISTRY: PlaceholderNameRegistry = {
       "type": "body",
       "idx": 13
     },
-    "subheadline": {
+    "subtitle": {
       "type": "body",
       "idx": 16
     },
-    "content2": {
+    "subtitle2": {
+      "type": "body",
+      "idx": 19
+    },
+    "content": {
       "type": "body",
       "idx": 22
+    },
+    "content2": {
+      "type": "body",
+      "idx": 20
     },
     "Footnote": {
       "type": "body",
