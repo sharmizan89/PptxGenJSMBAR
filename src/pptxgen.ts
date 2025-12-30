@@ -287,6 +287,23 @@ export default class PptxGenJS implements IPresentationProps {
 	}
 
 	/**
+	 * Division setting that controls which layouts are available.
+	 * When set to 'energy', includes energy-specific layouts (CERA_*, Horizons_*, Platts_*, etc.)
+	 * When set to anything else or not set, energy-specific layouts are excluded.
+	 * @type {string}
+	 */
+	private _division: string = ''
+	public set division(value: string) {
+		this._division = value
+		// Re-initialize slide layouts when division changes
+		this._initSlideLayouts()
+	}
+
+	public get division(): string {
+		return this._division
+	}
+
+	/**
 	 * Whether Right-to-Left (RTL) mode is enabled
 	 * @type {boolean}
 	 */
@@ -322,6 +339,9 @@ export default class PptxGenJS implements IPresentationProps {
 	public get slideLayouts(): SlideLayout[] {
 		return this._slideLayouts
 	}
+
+	/** filtered CUSTOM_SLIDE_LAYOUT_DEFS matching the _slideLayouts array (for XML export) */
+	private _filteredLayoutDefs: Array<{ name: string; xml?: string }> = []
 
 	private LAYOUTS: { [key: string]: PresLayout }
 
@@ -414,49 +434,8 @@ export default class PptxGenJS implements IPresentationProps {
 		}
 		this._rtlMode = false
 		//
-		// Initialize slide layouts from consolidated registry names (order defines slideLayoutN)
-		// Also populate _slideObjects with placeholder definitions from PLACEHOLDER_NAME_REGISTRY
-		this._slideLayouts = (CUSTOM_SLIDE_LAYOUT_DEFS && CUSTOM_SLIDE_LAYOUT_DEFS.length > 0)
-			? CUSTOM_SLIDE_LAYOUT_DEFS.map((def, idx) => {
-				// Get placeholder definitions for this layout from the registry
-				const layoutPlaceholders = PLACEHOLDER_NAME_REGISTRY[def.name] || {}
-				const slideObjects = Object.entries(layoutPlaceholders).map(([placeholderName, phDef]) => ({
-					_type: SLIDE_OBJECT_TYPES.placeholder as const,
-					text: [] as any[],
-					options: {
-						placeholder: placeholderName,
-						_placeholderType: phDef.type as any,
-						_placeholderIdx: phDef.idx,
-					},
-				}))
-				
-				return {
-					_margin: DEF_SLIDE_MARGIN_IN,
-					_name: def.name,
-					_presLayout: this._presLayout,
-					_rels: [],
-					_relsChart: [],
-					_relsMedia: [],
-					_slide: null,
-					_slideNum: 1000 + idx + 1,
-					_slideNumberProps: null,
-					_slideObjects: slideObjects as any[],
-				}
-			})
-			: [
-				{
-					_margin: DEF_SLIDE_MARGIN_IN,
-					_name: DEF_PRES_LAYOUT_NAME,
-					_presLayout: this._presLayout,
-					_rels: [],
-					_relsChart: [],
-					_relsMedia: [],
-					_slide: null,
-					_slideNum: 1000,
-					_slideNumberProps: null,
-					_slideObjects: [],
-				},
-			]
+		// Initialize slide layouts (filtered based on division setting)
+		this._initSlideLayouts()
 		this._slides = []
 		this._sections = []
 		this._masterSlide = {
@@ -496,6 +475,82 @@ export default class PptxGenJS implements IPresentationProps {
 		options.sectionTitle = sectAlreadyInUse ? this.sections[this.sections.length - 1].title : null
 
 		return this.addSlide(options)
+	}
+
+	/**
+	 * Initialize slide layouts from CUSTOM_SLIDE_LAYOUT_DEFS, filtered by division setting.
+	 * Energy-specific layouts are only included when division = 'energy'.
+	 * Energy-specific layouts: CERA_*, Horizons_*, Platts_*, Companies & Transactions, Energy, Energy_Spark
+	 */
+	private readonly _initSlideLayouts = (): void => {
+		// Energy-specific layout patterns - these are excluded unless division === 'energy'
+		const ENERGY_LAYOUT_PATTERNS = [
+			/^CERA_/i,
+			/^Horizons_/i,
+			/^Platts_/i,
+			/^Companies\s*[&amp;]*\s*Transactions/i,
+			/^Energy$/i,
+			/^Energy_Spark$/i,
+		]
+		
+		const isEnergyLayout = (name: string): boolean => {
+			return ENERGY_LAYOUT_PATTERNS.some(pattern => pattern.test(name))
+		}
+		
+		const isEnergyDivision = this._division && this._division.toLowerCase() === 'energy'
+		
+		// Filter layouts based on division
+		const filteredDefs = (CUSTOM_SLIDE_LAYOUT_DEFS || []).filter(def => {
+			if (isEnergyLayout(def.name)) {
+				return isEnergyDivision // Only include energy layouts if division is 'energy'
+			}
+			return true // Include all non-energy layouts
+		})
+		
+		this._slideLayouts = filteredDefs.length > 0
+			? filteredDefs.map((def, idx) => {
+				// Get placeholder definitions for this layout from the registry
+				const layoutPlaceholders = PLACEHOLDER_NAME_REGISTRY[def.name] || {}
+				const slideObjects = Object.entries(layoutPlaceholders).map(([placeholderName, phDef]) => ({
+					_type: SLIDE_OBJECT_TYPES.placeholder as const,
+					text: [] as any[],
+					options: {
+						placeholder: placeholderName,
+						_placeholderType: phDef.type as any,
+						_placeholderIdx: phDef.idx,
+					},
+				}))
+				
+				return {
+					_margin: DEF_SLIDE_MARGIN_IN,
+					_name: def.name,
+					_presLayout: this._presLayout,
+					_rels: [],
+					_relsChart: [],
+					_relsMedia: [],
+					_slide: null,
+					_slideNum: 1000 + idx + 1,
+					_slideNumberProps: null,
+					_slideObjects: slideObjects as any[],
+				}
+			})
+			: [
+				{
+					_margin: DEF_SLIDE_MARGIN_IN,
+					_name: DEF_PRES_LAYOUT_NAME,
+					_presLayout: this._presLayout,
+					_rels: [],
+					_relsChart: [],
+					_relsMedia: [],
+					_slide: null,
+					_slideNum: 1000,
+					_slideNumberProps: null,
+					_slideObjects: [],
+				},
+			]
+		
+		// Store the filtered definitions for use during XML export
+		this._filteredLayoutDefs = filteredDefs
 	}
 
 	/**
@@ -646,8 +701,8 @@ export default class PptxGenJS implements IPresentationProps {
 			// If a custom registry entry exists for a given index, use that exact XML; otherwise generate dynamically
 			this.slideLayouts.forEach((_layout, idx) => {
 				const layout = this.slideLayouts[idx]
-				const def = CUSTOM_SLIDE_LAYOUT_DEFS[idx]
-				const relDef = CUSTOM_SLIDE_LAYOUT_RELS[idx]
+				// Use _filteredLayoutDefs which matches the filtered slideLayouts array
+				const def = this._filteredLayoutDefs[idx]
 				if (def && def.xml) {
 					// Check if defineSlideMaster() added objects to this layout (like logos)
 					let layoutXml = def.xml

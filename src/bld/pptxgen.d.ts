@@ -99,6 +99,15 @@ export default class PptxGenJS implements IPresentationProps {
     set title(value: string);
     get title(): string;
     /**
+     * Division setting that controls which layouts are available.
+     * When set to 'energy', includes energy-specific layouts (CERA_*, Horizons_*, Platts_*, etc.)
+     * When set to anything else or not set, energy-specific layouts are excluded.
+     * @type {string}
+     */
+    private _division;
+    set division(value: string);
+    get division(): string;
+    /**
      * Whether Right-to-Left (RTL) mode is enabled
      * @type {boolean}
      */
@@ -117,6 +126,8 @@ export default class PptxGenJS implements IPresentationProps {
     /** slide layout definition objects, used for generating slide layout files */
     private _slideLayouts;
     get slideLayouts(): SlideLayout[];
+    /** filtered CUSTOM_SLIDE_LAYOUT_DEFS matching the _slideLayouts array (for XML export) */
+    private _filteredLayoutDefs;
     private LAYOUTS;
     private readonly _alignH;
     get AlignH(): typeof AlignH;
@@ -154,6 +165,12 @@ export default class PptxGenJS implements IPresentationProps {
      * @return {PresSlide} new Slide
      */
     private readonly addNewSlide;
+    /**
+     * Initialize slide layouts from CUSTOM_SLIDE_LAYOUT_DEFS, filtered by division setting.
+     * Energy-specific layouts are only included when division = 'energy'.
+     * Energy-specific layouts: CERA_*, Horizons_*, Platts_*, Companies & Transactions, Energy, Energy_Spark
+     */
+    private readonly _initSlideLayouts;
     /**
      * Provides an API for `addTableDefinition` to get slide reference by number
      * @param {number} slideNum - slide number
