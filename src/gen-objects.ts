@@ -451,10 +451,16 @@ export function addImageDefinition(target: PresSlide, opt: ImageProps): void {
 	const intHeight = opt.h || 0
 	const sizing = opt.sizing || null
 	const objHyperlink = opt.hyperlink || ''
-	const strImageData = opt.data || ''
-	const strImagePath = opt.path || ''
+	let strImageData = opt.data || ''
+	let strImagePath = opt.path || ''
 	let imageRelId = getNewRelId(target)
 	const objectName = opt.objectName ? encodeXmlEntities(opt.objectName) : `Image ${target._slideObjects.filter(obj => obj._type === SLIDE_OBJECT_TYPES.image).length}`
+
+	// NORMALIZE: If `path` is a data URI, treat it as `data` instead
+	if (!strImageData && strImagePath && strImagePath.toLowerCase().startsWith('data:')) {
+		strImageData = strImagePath
+		strImagePath = ''
+	}
 
 	// REALITY-CHECK:
 	if (!strImagePath && !strImageData) {
@@ -485,7 +491,8 @@ export function addImageDefinition(target: PresSlide, opt: ImageProps): void {
 	// However, pre-encoded images can be whatever mime-type they want (and good for them!)
 	if (strImageData && /image\/(\w+);/.exec(strImageData) && /image\/(\w+);/.exec(strImageData).length > 0) {
 		strImgExtn = /image\/(\w+);/.exec(strImageData)[1]
-	} else if (strImageData?.toLowerCase().includes('image/svg+xml')) {
+	}
+	if (strImageData?.toLowerCase().includes('image/svg+xml')) {
 		strImgExtn = 'svg'
 	}
 

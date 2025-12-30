@@ -330,7 +330,7 @@ Your job is to determine the number of slides or pages desired by the user.
 Just return the integer number between 5 and 50, no other context. !!! CRITICAL: !!! The integer number NEVER includes numbers in URLs.
 
 ##Important: You MUST follow these rules:
-If the number is below 2, return 5. 
+If the number is 5, return 5. 
 If the number is above 50, return 50.
 If the user does not express a preference, return 10.
 
@@ -358,7 +358,7 @@ step_head:data
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S&P Global PowerPoint Generator</title>
-<script src="https://cdn.jsdelivr.net/gh/sharmizan89/PptxGenJSMBAR@main/dist/pptxgen.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sharmizan89/PptxGenJSMBAR@v0.0.1/dist/pptxgen.bundle.js"></script>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -2122,7 +2122,7 @@ pptx.defineSlideMaster({
         // Chart placeholder (left side)
         {
             placeholder: {
-                options: { name: "chartData", type: "chart", x: 0.62, y: 2.50, w: 6.05, h: 3.62, fontFace: "Arial", fontSize: 9.5, color: colors.white, align: "center", valign: "middle", margin: 0 },
+                options: { name: "chartData", type: "chart", x: 0.62, y: 2.50, w: 6.05, h: 3.62, fontFace: "Arial", fontSize: 9.5, color: colors.white, align: "center", valign: "middle", margin: 0, _placeholderIdx: 16 },
                 text: "[chartData]"
             },
         },
@@ -2130,7 +2130,7 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: { name: "mainContent", type: "body", x: 7.13, y: 2.46, w: 5.70, h: 3.72, fontFace: "Arial", fontSize: 12, color: colors.black, align: "left", valign: "top", options: { bullet: { indent: 14 }, indentLevel: 0 }, paraSpaceBefore: 0, paraSpaceAfter: 6, _placeholderIdx: 17 },
-                text: "[Content]"
+                text: "[Click to add text]"
             }
         },
         // Footer placeholder
@@ -2187,13 +2187,13 @@ pptx.defineSlideMaster({
         {
             placeholder: {
                 options: { name: "mainContent", type: "body", x: 0.62, y: 3.05, w: 5.80, h: 3.13, fontFace: "Arial", fontSize: 12, color: colors.black, align: "left", valign: "top", options: { bullet: { indent: 14 }, indentLevel: 0 }, paraSpaceBefore: 0, paraSpaceAfter: 6, _placeholderIdx: 17 },
-                text: "[Content]"
+                text: "[Click to add text]"
             }
         },
         // Chart placeholder (right side)
         {
             placeholder: {
-                options: { name: "chartData", type: "chart", x: 7.23, y: 1.38, w: 5.50, h: 5.40, fontFace: "Arial", fontSize: 9.5, color: colors.white, align: "center", valign: "middle", margin: 0 },
+                options: { name: "chartData", type: "chart", x: 7.23, y: 1.38, w: 5.50, h: 5.40, fontFace: "Arial", fontSize: 9.5, color: colors.white, align: "center", valign: "middle", margin: 0, _placeholderIdx: 16 },
                 text: "[chartData]"
             },
         },
@@ -2846,7 +2846,7 @@ pptx.defineSlideMaster({
         // Placeholder: Banner Image
         {
             placeholder: {
-                options: { name: "image", type: "image",
+                options: { name: "image", type: "image", _placeholderIdx: 19,
                     x: 8.65, y: 1.41, w: 4.69, h: 5.39, order: 0 },
             },
         },
@@ -2896,7 +2896,7 @@ pptx.defineSlideMaster({
         // Placeholder: Banner Image
         {
             placeholder: {
-                options: { name: "image", type: "image",
+                options: { name: "image", type: "image", _placeholderIdx: 21,
                     x: 0.00, y: 4.04, w: 13.33, h: 3.46, order: 0 },
             },
         },
@@ -3509,6 +3509,111 @@ step_templates:data
     "template": "Title White - reports and presentations (hIHS)",
     "instructions": "Provide a URL for the <Banner Image>. Provide a [Presentation Title] (min 3 / !!! max 6 tokens !!!). Provide a [Presentation Subtitle] (max 7 tokens). Provide author information in the format 'First and Last Name / Department / Job Title' (min 10 / max 25 tokens): ${user_first_name} ${user_last_name}. Provide the presentation date (max 6 tokens). Provide [REPORT TYPE] - e.g., 'INSIGHT', 'STRATEGIC REPORT', 'MARKET BRIEFING', 'DATA', 'HEADLINE ANALYSIS' (max 12 tokens). Provide optional content (max 6 tokens) - delete if not needed.",
     "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Title White - reports and presentations (hIHS)\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Presentation title]\", { placeholder: \"title\" });\nslide<slideNumber>.addText(\"[Presentation subtitle]\", { placeholder: \"subtitle\" });\nslide<slideNumber>.addText(\"[Author information / Department / Job Title]\", { placeholder: \"authorInfo\" });\nslide<slideNumber>.addText(\"[Report type]\", { placeholder: \"reportType\" });\nslide<slideNumber>.addText(\"[Optional placeholder]\", { placeholder: \"optionalPlaceholder\" });\nslide<slideNumber>.addText(\"${step_date_output}\", { placeholder: \"date\" });\n\nslide<slideNumber>.addImage({ path: \"<imageUrl>\", x: 8.65, y: 1.41, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 4.69, h: 5.39 }});"
+},
+{
+    "template": "Title Image Bottom",
+    "instructions": "Provide a URL for the <Banner Image>. Provide a [Presentation Title] (min 3 / !!! max 6 tokens!!!). Provide a [Presentation Subtitle] (max 7 tokens). Provide author information in the format 'First and Last Name / Department / Job Title' (min 10 / max 25 tokens): ${user_first_name} ${user_last_name}. Provide the presentation date (max 6 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Title Image Bottom\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Presentation title]\", { placeholder: \"title\" });\nslide<slideNumber>.addText(\"[Presentation subtitle]\", { placeholder: \"subtitle\" });\nslide<slideNumber>.addText(\"[Author information / Department / Job Title]\", { placeholder: \"authorInfo\" });\nslide<slideNumber>.addText(\"${step_date_output}\", { placeholder: \"date\" });\n\nslide<slideNumber>.addImage({ path: \"<imageUrl>\", x: 0.00, y: 4.04, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 13.33, h: 3.46 }});"
+},
+{
+    "template": "Icons 3 Columns Vertical",
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens) and the main body content (min 175 / max 250 tokens). For each of the 3 columns, provide: a URL for <Image> (icons/small images), [Subtitle] (max 7 tokens), and [Content] (max 50 tokens per column). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 3 Columns Vertical\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\n\n// Column 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl1>\", x: 0.61, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 1.27, h: 1.27 }});\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Column 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl2>\", x: 4.82, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 1.27, h: 1.27 }});\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Column 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl3>\", x: 9.03, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 1.27, h: 1.27 }});\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+},
+{
+    "template": "Icons 3 Columns Horizontal",
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens) and the main body content (min 175 / max 250 tokens). For each of the 3 rows, provide: a URL for <Image> (icons/small images), [Subtitle] (max 7 tokens), and [Content] (max 30 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 3 Columns Horizontal\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl1>\", x: 0.62, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.93, h: 0.93 }});\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl2>\", x: 0.62, y: 2.97, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.93, h: 0.93 }});\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl3>\", x: 0.62, y: 4.55, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.93, h: 0.93 }});\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+},
+{
+    "template": "Icons 4 Columns + Content",
+    "instructions": "Provide a [headline] (max 12 tokens). Provide a [subheadline] (max 7 tokens). Provide main [content] for the left panel (max 250 tokens). For each of the 4 right-side rows, provide: a URL for <Image> (icons/small images), [Subtitle] (max 6 tokens), and [Content] (max 20 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 4 Columns + Content\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Content]\", { placeholder: \"content\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl1>\", x: 7.24, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl2>\", x: 7.24, y: 2.72, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl3>\", x: 7.24, y: 4.06, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\n// Row 4\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl4>\", x: 7.24, y: 5.39, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle4]\", { placeholder: \"subtitle4\" });\nslide<slideNumber>.addText(\"[Content4]\", { placeholder: \"content4\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+},
+{
+    "template": "Icons 4 Columns + Content Blue",
+    "instructions": "Provide a [headline] (max 12 tokens). Provide a [subheadline] (max 7 tokens). Provide main [content] for the left panel (max 250 tokens). For each of the 4 right-side rows, provide: a URL for <Image> (icons/small images), [Subtitle] (max 6 tokens), and [Content] (max 20 tokens per row). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Icons 4 Columns + Content Blue\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Content]\", { placeholder: \"content\" });\n\n// Row 1\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl1>\", x: 7.24, y: 1.38, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle1]\", { placeholder: \"subtitle1\" });\nslide<slideNumber>.addText(\"[Content1]\", { placeholder: \"content1\" });\n\n// Row 2\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl2>\", x: 7.24, y: 2.72, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle2]\", { placeholder: \"subtitle2\" });\nslide<slideNumber>.addText(\"[Content2]\", { placeholder: \"content2\" });\n\n// Row 3\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl3>\", x: 7.24, y: 4.06, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle3]\", { placeholder: \"subtitle3\" });\nslide<slideNumber>.addText(\"[Content3]\", { placeholder: \"content3\" });\n\n// Row 4\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl4>\", x: 7.24, y: 5.39, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 0.80, h: 0.80 }});\nslide<slideNumber>.addText(\"[Subtitle4]\", { placeholder: \"subtitle4\" });\nslide<slideNumber>.addText(\"[Content4]\", { placeholder: \"content4\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+},
+{
+    "template": "Content + Chart/Table 1",
+    "instructions": "This template features a left content panel and right chart area. Provide [headline] (max 5 tokens). Provide [subheadline] (max 7 tokens). Provide main [content] for the left panel (max 250 tokens). Provide [chartData] as chart configuration or data for the right side. Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Content + Chart/Table 1\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Click to add text]\", { placeholder: \"mainContent\" });\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });\n\n//overlay real chart on top of placeholder here using the generated code and x: 7.23, y: 0.38, w: 5.50, h: 5.75"
+},
+{
+    "template": "Chart - Horizontal 2",
+    "instructions": "Provide [headline] (max 12 tokens). Provide [subheadline] (max 7 tokens). Provide [description] to explain the chart content (max 30 tokens). Provide [chartData] as chart configuration or data. Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Chart - Horizontal 2\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Chart description]\", { placeholder: \"description\" });\n\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });\n\n//overlay real chart on top of placeholder here using the [chartData] generated code and x: 0.62, y: 2.50, w: 12.10, h: 3.62"
+},
+{
+    "template": "Chart + Statement 2",
+    "instructions": "This template features a left chart area and right content panel. Provide [headline] (max 12 tokens). Provide [subheadline] (max 7 tokens). Provide [description] to explain the chart content (max 60 tokens). Provide [chartData] as chart configuration or data. Provide main [content] for the right panel (max 60 tokens). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Chart + Statement 2\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Chart description]\", { placeholder: \"statement\" });\nslide<slideNumber>.addText(\"[Content]\", { placeholder: \"mainContent\" });\n\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });\n\n//overlay real chart on top of placeholder here using the [chartData] generated code and x: 0.62, y: 2.50, w: 6.05, h: 3.62"
+},
+{
+    "template": "Chart + Statement 3",
+    "instructions": "This template features a left content panel and right chart area. Provide [headline] (max 12 tokens). Provide [subheadline] (max 7 tokens). Provide [description] to explain the chart content (max 60 tokens). Provide [chartData] as chart configuration or data. Provide main [content] for the right panel (max 60 tokens). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Chart + Statement 3\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Chart description]\", { placeholder: \"statement\" });\nslide<slideNumber>.addText(\"[Content]\", { placeholder: \"mainContent\" });\n\n\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });\n\n//overlay real chart on top of placeholder here using the [chartData] generated code and x: 7.23, y: 1.38, w: 5.50, h: 5.40"
+},
+{
+    "template": "Statement Photo",
+    "instructions": "This template features a background image with white text. Provide a URL for the <Main Image>. Provide [Statement] as the main focal content (max 60 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Statement Photo\" });\n\n// NEVER adjust image sizing or position - use fixed dimensions\nslide<slideNumber>.addImage({ path: \"<imageUrl>\", x: 0.00, y: 0.00, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 13.33, h: 7.50 }});\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Main content\nslide<slideNumber>.addText(\"[Add statement]\", { placeholder: \"statement\" });"
+},
+{
+    "template": "Statement Black",
+    "instructions": "This template features a black background with white text. Provide [Statement] as the main focal content (max 60 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Statement Black\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Main content\nslide<slideNumber>.addText(\"[Add statement]\", { placeholder: \"statement\" });"
+},
+{
+    "template": "Statement White",
+    "instructions": "This template features a white background with black text. Provide [Statement] as the main focal content (max 60 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Statement White\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Main content\nslide<slideNumber>.addText(\"[Add statement]\", { placeholder: \"statement\" });"
+},
+{
+    "template": "Section Header",
+    "instructions": "Provide a [title] for the section break (max 8 tokens) and optional author information (max 12 tokens). Optionally provide a URL for the <Main Image>. Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens). This template uses a black background with white text and is designed for section transitions.",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Section Header\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Add divider slide title]\", { placeholder: \"title\" });\nslide<slideNumber>.addText(\"[Optional, Author First and Last Name]\", { placeholder: \"authorInfo\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\n\n// First add empty content to image placeholder to render it\nslide<slideNumber>.addText(\"_\", { placeholder: \"image\" });\n\n// Then add main image (will appear on top of placeholder)\nslide<slideNumber>.addImage({ path: \"<imageUrl>\", x: 6.58, y: 0.00, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 6.25, h: 0.35 }});"
+},
+{
+    "template": "Divider 4 Photo",
+    "instructions": "Provide a [title] for the section break (max 8 tokens) and optional author information (max 12 tokens). Optionally provide a URL for the <Main Image>. Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens). This template uses a light blue background with black text and is designed for section transitions.",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Divider 4 Photo\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Add divider slide title]\", { placeholder: \"title\" });\nslide<slideNumber>.addText(\"[Optional, Author First and Last Name]\", { placeholder: \"authorInfo\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\n\n// add main image (will appear on top of placeholder)\nslide<slideNumber>.addImage({ path: \"<imageUrl>\", x: 6.58, y: 0.00, w: 12.00, h: 6.28, sizing: { type: 'cover', w: 6.25, h: 0.35 }});"
+},
+{
+    "template": "Divider 1",
+    "instructions": "Provide a [title] for the section break (max 8 tokens) and optional author information (max 12 tokens). Provide [content] for additional context or description (max 31 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens). This template uses a white background with black text.",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Divider 1\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Add divider slide title]\", { placeholder: \"title\" });\nslide<slideNumber>.addText(\"[Click to add text]\", { placeholder: \"content\" });\nslide<slideNumber>.addText(\"[Optional, Author First and Last Name]\", { placeholder: \"authorInfo\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });"
+},
+{
+    "template": "Divider 2",
+    "instructions": "Provide a [title] for the section break (max 8 tokens) and optional author information (max 12 tokens). Provide [content] for additional context or description (max 31 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens). This template uses a light blue background with black text.",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Divider 2\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add content to placeholders\nslide<slideNumber>.addText(\"[Add divider slide title]\", { placeholder: \"title\" });\nslide<slideNumber>.addText(\"[Click to add text]\", { placeholder: \"content\" });\nslide<slideNumber>.addText(\"[Optional, Author First and Last Name]\", { placeholder: \"authorInfo\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });"
+},
+{
+    "template": "Two Placeholders",
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens), and top/bottom content (min 150 / max 250 tokens each). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Two Placeholders\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add main content\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content1\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content2\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+},
+{
+    "template": "Three Placeholders 1",
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens), and content for each of the 3 content placeholders (min 150 / max 250 tokens each). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Three Placeholders 1\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add main content\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content1\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content2\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content3\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+},
+{
+    "template": "Three Placeholders 2",
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens), and content for each of the 3 content placeholders (min 150 / max 250 tokens each). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Three Placeholders 2\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add main content\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content1\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content2\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content3\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+},
+{
+    "template": "Three Placeholders 3",
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens), and content for each of the 3 content placeholders (min 150 / max 250 tokens each). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Three Placeholders 3\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add main content\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content1\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content2\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content3\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
+},
+{
+    "template": "Four Placeholders",
+    "instructions": "Provide a headline (max 12 tokens), a subheadline (max 7 tokens), and content for each of the 4 content placeholders (min 50 / max 150 tokens each). Enter any source information, legal disclaimer or footnote text (min 5 / max 51 tokens). Provide your section name (optional), presentation title and date in the format 'Section name (optional) / Presentation title / Month Year' (min 10 / max 21 tokens).",
+    "code": "let slide<slideNumber> = pptx.addSlide({ masterName: \"Four Placeholders\" });\n\n// Add slide number\nslide<slideNumber>.addText(\"<slideNumber>\", { placeholder: \"slideNumber\" });\n\n// Add main content\nslide<slideNumber>.addText(\"[Headline - one line max]\", { placeholder: \"headline\" });\nslide<slideNumber>.addText(\"[Subheadline - one line max]\", { placeholder: \"subheadline\" });\nslide<slideNumber>.addText(\"[Section name (optional) / Presentation title / Month Year]\", { placeholder: \"footer\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content1\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content2\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content3\" });\nslide<slideNumber>.addText(\"[Click to add content]\", { placeholder: \"content4\" });\nslide<slideNumber>.addText(\"[Source / Legal disclaimer / Footnote]\", { placeholder: \"source\" });"
 }
 ]
 ----
